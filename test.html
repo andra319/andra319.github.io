@@ -8,7 +8,7 @@
     /* Override font sizes for better readability on a printed poster */
     /* Base font size for all elements */
     .window-body * {
-      font-size: 16px !important;
+      font-size: 20px !important;
     }
 
     /* Section titles */
@@ -89,9 +89,8 @@
       grid-row: 2;
       min-height: auto;
     }
-    /* Reduce spacing in abstract window */
-    .abstract-window .window-body {
-      padding: 8px; /* Reduce from default 16px */
+  .window-body * {
+      font-size: 20px !important;
     }
 
     .abstract-window .window-body p {
@@ -273,7 +272,7 @@
     
     @media print {
     .poster {
-      transform: scale(0.9); /* Slightly reduce the scale for printing */
+      transform: scale(0.95); /* Slightly reduce the scale for printing */
       transform-origin: top center;
     }
     
@@ -724,7 +723,7 @@
               <div style="font-size: 0.9em; border: 1px solid #808080; padding: 8px; background-color: #f0f0f0;">
                 <div style="font-weight: bold;">Flight Planning Process:</div>
                 <p style="margin: 5px 0; font-size: 0.85em;">
-                  Flight planning uses RiParameter to calculate optimal settings, followed by SnapPlan to design efficient flight lines. This ensures complete coverage while balancing data quality requirements with operational efficiency and cost considerations.
+                  Flight planning uses RiParameter to calculate optimal settings, followed by SnapPlan to design efficient flight lines. This ensures complete coverage while balancing data quality requirements with operational efficiency and cost considerations. 
                 </p>
               </div>
             </div>
@@ -773,14 +772,6 @@
                 </ul>
               </div>
             </div>
-          </div>
-          
-          <!-- Bottom section: Data Collection -->
-          <div style="margin-top: 10px;">
-            <div class="section-title">Data Collection Process:</div>
-            <p style="font-size: 0.9em; margin: 3px 0;">
-              During flight operations, the RIEGL VQ-780i scanner emits near-infrared laser pulses that reflect off ground features and return to the sensor. The system records the time difference between pulse emission and return to calculate distance. Simultaneously, the integrated IMU/GNSS system records precise aircraft position and orientation. Together, these systems allow for accurate 3D positioning of each laser return point in real-time.
-            </p>
           </div>
         </div>
       </div>
