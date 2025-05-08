@@ -5,94 +5,217 @@
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="https://unpkg.com/98.css" />
   <style>
+    /* Override font sizes for better readability on a printed poster */
+    /* Base font size for all elements */
+    .window-body * {
+      font-size: 24px !important;
+    }
+
+    /* Section titles */
+    .section-title {
+      font-size: 30px !important;
+    }
+
+    /* Main title */
+    h1 {
+      font-size: 48px !important;
+    }
+
+    /* Override specifically for elements that should remain relatively smaller */
+    .side-panel-content * {
+      font-size: 20px !important; /* Slightly smaller for side panels but still readable */
+    }
+
+    /* Image captions */
+    .win98-image-container div {
+      font-size: 18px !important;
+    }
+
+    /* Table text */
+    table.interactive th, 
+    table.interactive td {
+      font-size: 20px !important;
+    }
+
+    /* Flowchart items */
+    .flowchart-item {
+      font-size: 22px !important;
+    }
+
+    .flowchart-item div {
+      font-size: 20px !important;
+    }
     /* Set up the poster dimensions and background */
     body {
       margin: 0;
       padding: 0;
       background-color: #008080; /* Classic Windows 98 teal */
-      font-family: Arial, sans-serif;
+      font-family: Tahoma, Verdana, sans-serif; /* Windows 98 UI font */
       min-width: 100%;
       height: 100%;
       overflow: auto;
     }
     
-    /* Container for 17x22 inch print dimensions - PORTRAIT MODE */
+    /* First, increase the overall container width */
     .print-container {
-      width: 17in;
-      max-width: 1224px; /* Fallback for browsers that don't support inches */
+      width: 95%; /* Change from 17in to 95% of viewport width */
+      max-width: 1800px; /* Increase from 1224px to a much larger value */
       height: auto; 
       min-height: 22in;
-      padding-bottom: 40px; /* Space for the taskbar */
+      padding-bottom: 40px;
       margin: 0 auto;
       position: relative;
     }
-    
-    /* Main poster container - PORTRAIT LAYOUT */
+
+    /* Adjust grid column widths for better space utilization */
     .poster {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto auto auto auto auto;
+      grid-template-columns: 1fr 2fr 2fr; /* Makes the side panel relatively smaller */
+      grid-template-rows: auto auto auto auto auto auto auto;
       gap: 12px;
-      padding: 24px;
+      padding: 12px;
       height: auto;
       box-sizing: border-box;
     }
-    
-    /* Title bar spans all columns */
+
+    /* Update main content windows to use middle and right columns */
     .title-window {
-      grid-column: 1 / 3;
+      grid-column: 1 / 4; /* Spans across two right columns */
       grid-row: 1;
     }
-    
-    /* Abstract section */
+
     .abstract-window {
-      grid-column: 1 / 3;
+      grid-column: 2 / 4;
       grid-row: 2;
+      min-height: auto;
     }
-    
-    /* Workflow overview window */
+    /* Reduce spacing in abstract window */
+    .abstract-window .window-body {
+      padding: 8px; /* Reduce from default 16px */
+    }
+
+    .abstract-window .window-body p {
+      margin: 0; /* Remove paragraph margins */
+    }
     .workflow-overview-window {
-      grid-column: 1 / 3;
+      grid-column: 2 / 4;
       grid-row: 3;
     }
-    
-    /* Core process windows - 2x2 grid */
+
     .flight-planning-window {
-      grid-column: 1;
+      grid-column: 2;
       grid-row: 4;
     }
-    
+
     .lidar-acquisition-window {
-      grid-column: 2;
+      grid-column: 3;
       grid-row: 4;
     }
-    
+
     .lidar-processing-window {
-      grid-column: 1;
-      grid-row: 5;
-    }
-    
-    .lidar-classification-window {
       grid-column: 2;
       grid-row: 5;
     }
-    
-    /* Results & Applications window */
+
+    .lidar-classification-window {
+      grid-column: 3;
+      grid-row: 5;
+    }
+
     .results-applications-window {
-      grid-column: 1 / 3;
+      grid-column: 2 / 4;
       grid-row: 6;
     }
-    
-    /* Conclusion window */
+
     .conclusion-window {
-      grid-column: 1;
-      grid-row: 7;
-    }
-    
-    /* References window */
-    .references-window {
       grid-column: 2;
       grid-row: 7;
+    }
+
+    .references-window {
+      grid-column: 3;
+      grid-row: 7;
+    }
+
+    /* Side panel windows - these will be in column 1 */
+    .theory-panel-window {
+      grid-column: 1;
+      grid-row: 2 / 5; /* Spans rows 2-4 */
+      height: auto;
+    }
+
+    .glossary-panel-window {
+      grid-column: 1;
+      grid-row: 5 / 8; /* Spans rows 5-7 */
+      height: auto;
+    }
+
+    /* Vertical scrolling for taller side panels */
+    .side-panel-content {
+      max-height: 100%;
+      overflow-y: auto;
+      padding-right: 5px;
+    }
+
+    /* Windows 98 scrollbar styles */
+    .side-panel-content::-webkit-scrollbar {
+      width: 16px;
+    }
+
+    .side-panel-content::-webkit-scrollbar-track {
+      background: #c0c0c0;
+      border: 1px solid #808080;
+    }
+
+    .side-panel-content::-webkit-scrollbar-thumb {
+      background: #c0c0c0;
+      border: 1px solid;
+      border-color: #ffffff #808080 #808080 #ffffff;
+    }
+
+    /* Win98 help icon styling */
+    .help-icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: #c0c0c0;
+      border: 1px solid;
+      border-color: #ffffff #808080 #808080 #ffffff;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 20px;
+      font-weight: bold;
+      color: #000080;
+      margin-right: 5px;
+    }
+
+    /* Windows 98 file explorer styling */
+    .folder-item {
+      display: flex;
+      align-items: center;
+      padding: 3px;
+      margin: 2px 0;
+    }
+
+    .folder-item:hover {
+      background-color: #000080;
+      color: white;
+    }
+
+    .folder-icon {
+      margin-right: 5px;
+      width: 16px;
+      height: 16px;
+    }
+
+    .file-size {
+      margin-left: auto;
+      font-size: 0.8em;
+      color: #808080;
+    }
+
+    .folder-item:hover .file-size {
+      color: white;
     }
     
     /* Custom styling for windows */
@@ -143,14 +266,21 @@
     .content-section {
       margin-bottom: 15px;
     }
+    @page {
+      size: 17in 22in;
+      margin: 0;
+    }
     
-    /* For printing purposes */
     @media print {
-      body {
-        width: 17in;
-        height: 22in;
-        overflow: hidden;
-      }
+    .poster {
+      transform: scale(0.9); /* Slightly reduce the scale for printing */
+      transform-origin: top center;
+    }
+    
+    /* Hide elements not needed for print */
+    .instructions-banner, .desktop-icons, .start-bar {
+      display: none !important;
+    }
       
       .print-container {
         width: 17in;
@@ -320,24 +450,164 @@
             <button aria-label="Close"></button>
           </div>
         </div>
-        <div class="window-body" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 20px;">
-          <!-- Logo on the left -->
-          <div style="flex: 0 0 auto; margin-right: 20px;">
-            <div class="win98-image-container" style="padding: 3px;">
-              <img src="eagle.jpg" onerror="this.onerror=null; this.src='/api/placeholder/120/120';" alt="Eagle Mapping Logo" style="width: 120px; height: auto; max-height: 80px; object-fit: contain;">
-            </div>
+        <div class="window-body" style="position: relative; padding: 10px 0;">
+          <!-- First logo on the left -->
+          <div style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%);">
+            <img src="CARD-LOGO-NameTransparent-round-small.png" onerror="this.onerror=null; this.src='/api/placeholder/80/80';" alt="Eagle Mapping Logo" style="width: 80px; height: 80px; object-fit: contain;">
           </div>
           
-          <!-- Title in the center -->
-          <div style="flex: 1 1 auto; text-align: center;">
-            <h1 style="text-align: center; font-size: 32px; margin: 0;">LiDAR Workflow at Eagle Mapping</h1>
-            <p style="text-align: center; margin: 10px 0 0 0;">
+          <!-- Second logo on the right -->
+          <div style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%);">
+            <img src="eagle.jpg" onerror="this.onerror=null; this.src='/api/placeholder/80/80';" 
+                 alt="Eagle Logo" 
+                 style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; border: 2px solid #c0c0c0;">
+          </div>
+          <!-- Centered title -->
+          <div style="text-align: center; padding: 0 110px;">
+            <h1 style="font-size: 32px; margin: 0;">LiDAR Workflow at Eagle Mapping</h1>
+            <p style="margin: 10px 0 0 0;">
               <span style="color: purple; font-weight: bold;">✨ Aerial LiDAR Acquisition & Processing ✨</span>
             </p>
           </div>
-          
-          <!-- Spacer to balance the layout -->
-          <div style="flex: 0 0 auto; width: 120px;"></div>
+        </div>
+      </div>
+
+      <!-- LiDAR Theory Side Panel (Left Top) -->
+      <div class="theory-panel-window window">
+        <div class="title-bar">
+          <div class="title-bar-text">LiDAR Theory</div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close"></button>
+          </div>
+        </div>
+        <div class="window-body">
+          <div class="side-panel-content">
+            <div class="section-title">How LiDAR Works:</div>
+            <p style="font-size: 0.85em; margin: 3px 0;">
+              LiDAR (Light Detection and Ranging) is a remote sensing method that uses light in the form of pulsed lasers to measure distances to the Earth's surface.
+            </p>
+            
+            <div class="win98-image-container" style="margin: 8px 0;">
+              <div class="image-container">
+                <img src="lidar_theory.jpg" onerror="this.onerror=null; this.src='/api/placeholder/180/120';" alt="LiDAR Theory" style="max-height: 120px;">
+              </div>
+              <div style="text-align: center; margin-top: 3px; font-size: 0.7em;">LiDAR operating principle</div>
+            </div>
+            
+            <div class="section-title">Key Components:</div>
+            <ul style="font-size: 0.85em; margin: 3px 0; padding-left: 20px;">
+              <li><b>Laser:</b> Emits pulses of light</li>
+              <li><b>Scanner:</b> Directs laser pulses</li>
+              <li><b>Photodetector:</b> Measures returned signals</li>
+              <li><b>GPS/IMU:</b> Tracks position and orientation</li>
+            </ul>
+            
+            <div class="section-title">Pulse Types:</div>
+            <table class="interactive" style="margin-top: 5px; font-size: 0.8em;">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Wavelength</th>
+                  <th>Use</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>NIR</td>
+                  <td>1064nm</td>
+                  <td>Topographic</td>
+                </tr>
+                <tr>
+                  <td>Green</td>
+                  <td>532nm</td>
+                  <td>Bathymetric</td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <div class="section-title" style="margin-top: 10px;">Return Types:</div>
+            <p style="font-size: 0.85em; margin: 3px 0;">
+              A single laser pulse can have multiple returns:
+            </p>
+            <ul style="font-size: 0.85em; margin: 3px 0; padding-left: 20px;">
+              <li><b>First Return:</b> Typically tree canopy</li>
+              <li><b>Intermediate Returns:</b> Vegetation layers</li>
+              <li><b>Last Return:</b> Often ground surface</li>
+            </ul>
+            
+            <div class="section-title" style="margin-top: 10px;">Accuracy Factors:</div>
+            <ul style="font-size: 0.85em; margin: 3px 0; padding-left: 20px;">
+              <li>Flying height</li>
+              <li>Scan angle</li>
+              <li>GPS/IMU precision</li>
+              <li>Atmospheric conditions</li>
+              <li>Target reflectivity</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- LiDAR Terminology Glossary (Left Bottom) -->
+      <div class="glossary-panel-window window">
+        <div class="title-bar">
+          <div class="title-bar-text">LiDAR Terminology</div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close"></button>
+          </div>
+        </div>
+        <div class="window-body">
+          <div class="side-panel-content">
+            <div style="background-color: #c0c0c0; padding: 5px; border: 1px solid #808080; margin-bottom: 10px; font-size: 0.85em;">
+              <b>LiDAR Terminology Glossary</b> - Common terms used in LiDAR mapping
+            </div>
+            
+            <div style="height: calc(100% - 30px); overflow-y: auto;">
+              <dl style="font-size: 0.85em; margin: 0; padding: 0;">
+                <dt style="font-weight: bold; color: #000080;">AGL</dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">Above Ground Level - Height measurement from ground surface rather than sea level.</dd>
+                
+                <dt style="font-weight: bold; color: #000080;">Bare Earth DEM</dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">Digital Elevation Model containing only ground points with vegetation and buildings removed.</dd>
+                
+                <dt style="font-weight: bold; color: #000080;">DSM</dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">Digital Surface Model - Represents the earth's surface including all objects (buildings, vegetation).</dd>
+                
+                <dt style="font-weight: bold; color: #000080;">DTM</dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">Digital Terrain Model - Representation of bare ground surface without objects.</dd>
+                
+                <dt style="font-weight: bold; color: #000080;">GCP</dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">Ground Control Point - Surveyed point with known coordinates used for georeferencing.</dd>
+                
+                <dt style="font-weight: bold; color: #000080;">GSD</dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">Ground Sampling Distance - Distance between pixel centers on the ground.</dd>
+                
+                <dt style="font-weight: bold; color: #000080;">IMU</dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">Inertial Measurement Unit - Device that measures aircraft orientation and movement.</dd>
+                
+                <dt style="font-weight: bold; color: #000080;">Intensity</dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">Strength of the return signal, affected by surface reflectivity.</dd>
+                
+                <dt style="font-weight: bold; color: #000080;">LAS/LAZ</dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">Industry-standard file formats for LiDAR point clouds (LAZ is compressed).</dd>
+                
+                <dt style="font-weight: bold; color: #000080;">Point Cloud</dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">Collection of data points in 3D space, each with X, Y, Z coordinates.</dd>
+                
+                <dt style="font-weight: bold; color: #000080;">Point Density</dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">Number of points per square meter, indicating data resolution.</dd>
+                
+                <dt style="font-weight: bold; color: #000080;">RMSE</dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">Root Mean Square Error - Statistical measure of positional accuracy.</dd>
+                
+                <dt style="font-weight: bold; color: #000080;">SBET</dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">Smoothed Best Estimate of Trajectory - Processed flight path data.</dd>
+              </dl>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -353,7 +623,7 @@
         </div>
         <div class="window-body">
           <p>
-            This practicum with Eagle Mapping focused on LiDAR (Light Detection and Ranging) acquisition and processing workflows for high-precision topographic mapping. The project involved flight planning, aerial data collection using RIEGL LiDAR systems, data processing, and point cloud classification. Working with industry-standard equipment and software, I participated in the complete LiDAR workflow from acquisition to final product delivery, addressing challenges in data management, quality control, and integration with existing GIS systems while adhering to industry specifications for spatial accuracy.
+            My practicum with Eagle Mapping focused on aerial imagery acquisition and processing workflows for high-precision topographic mapping. The practicum involved flight planning, aerial data collection, data processing, and point cloud classification. Working with industry-standard equipment and software, I participated in the complete LiDAR workflow from acquisition to final product delivery, addressing challenges in data management, quality control, and integration with existing GIS systems while adhering to industry specifications for spatial accuracy.
           </p>
         </div>
       </div>
@@ -368,10 +638,16 @@
           </div>
         </div>
         <div class="window-body">
-          <div class="section-title">Complete LiDAR Workflow Process:</div>
+          <!-- Text description now comes first -->
+          <div style="font-size: 0.9em; border: 1px solid #808080; padding: 10px; background-color: #f0f0f0;">
+            <div style="font-weight: bold; color: purple;">✨ Key Components ✨</div>
+            <p style="margin: 6px 0;">
+              The product workflow at Eagle Mapping involves a series of integrated steps resulting in high-precision topographic data. Flight planning ensures optimal coverage and point density, while acquisition captures millions of data points per second using aerial LiDAR sensors. Processing involves trajectory correction and data alignment, followed by classification to identify different surface types. Final products include digital terrain models (DTMs), digital surface models (DSMs), and high resolution imagery used in various GIS applications.
+            </p>
+          </div>
           
-          <!-- Flowchart -->
-          <div class="flowchart">
+          <!-- Flowchart comes second with a margin at the top -->
+          <div class="flowchart" style="margin-top: 15px;">
             <div class="flowchart-item">
               <div style="font-weight: bold;">Flight Planning</div>
               <div style="font-size: 0.8em; margin-top: 5px;">Determine project parameters & flight lines</div>
@@ -380,61 +656,29 @@
             <div class="flowchart-arrow">→</div>
             
             <div class="flowchart-item">
-              <div style="font-weight: bold;">LiDAR Acquisition</div>
-              <div style="font-size: 0.8em; margin-top: 5px;">Collect raw point cloud data</div>
+              <div style="font-weight: bold;"> Data Acquisition</div>
+              <div style="font-size: 0.8em; margin-top: 5px;">Collect LiDAR and image data</div>
             </div>
             
             <div class="flowchart-arrow">→</div>
             
             <div class="flowchart-item">
-              <div style="font-weight: bold;">LiDAR Processing</div>
-              <div style="font-size: 0.8em; margin-top: 5px;">Filter, align & georeference data</div>
+              <div style="font-weight: bold;">Data Processing</div>
+              <div style="font-size: 0.8em; margin-top: 5px;">Align & georeference data</div>
             </div>
             
             <div class="flowchart-arrow">→</div>
             
             <div class="flowchart-item">
               <div style="font-weight: bold;">Classification</div>
-              <div style="font-size: 0.8em; margin-top: 5px;">Identify ground, vegetation & structures</div>
+              <div style="font-size: 0.8em; margin-top: 5px;">Categorize based on client requirements</div>
             </div>
             
             <div class="flowchart-arrow">→</div>
             
             <div class="flowchart-item">
               <div style="font-weight: bold;">Final Products</div>
-              <div style="font-size: 0.8em; margin-top: 5px;">DTM, DSM & derivative products</div>
-            </div>
-          </div>
-          
-          <div style="margin-top: 15px; display: flex; gap: 20px;">
-            <!-- Left side: Workflow diagram -->
-            <div style="flex: 1; max-width: 48%;">
-              <div class="win98-image-container">
-                <div class="image-container">
-                  <img src="workflow_diagram.jpg" onerror="this.onerror=null; this.src='/api/placeholder/400/250';" alt="LiDAR Workflow Diagram" style="max-height: 220px;">
-                </div>
-                <div style="text-align: center; margin-top: 3px; font-size: 0.8em;">
-                  Complete LiDAR workflow diagram showing data flow
-                </div>
-              </div>
-            </div>
-            
-            <!-- Right side: Text description -->
-            <div style="flex: 1; max-width: 48%;">
-              <div class="section-title">Key Components:</div>
-              <p style="font-size: 0.9em; margin: 3px 0;">
-                The LiDAR workflow at Eagle Mapping involves a series of integrated steps resulting in high-precision topographic data. Flight planning ensures optimal coverage and point density, while acquisition captures millions of data points per second using aerial LiDAR sensors. Processing involves trajectory correction and data alignment, followed by classification to identify different surface types. Final products include digital terrain models (DTMs), digital surface models (DSMs), and contour lines used in various GIS applications.
-              </p>
-              
-              <div style="margin-top: 10px; font-size: 0.9em; border: 1px solid #808080; padding: 6px; background-color: #f0f0f0;">
-                <div style="font-weight: bold; color: purple;">✨ Project Specifications ✨</div>
-                <ul style="margin: 3px 0; padding-left: 20px; font-size: 0.85em;">
-                  <li>Point density: 8-12 points/m²</li>
-                  <li>Vertical accuracy: ±15cm</li>
-                  <li>Horizontal accuracy: ±25cm</li>
-                  <li>Classification accuracy: >98%</li>
-                </ul>
-              </div>
+              <div style="font-size: 0.8em; margin-top: 5px;">DTM, DSM & imagery</div>
             </div>
           </div>
         </div>
@@ -451,48 +695,38 @@
           </div>
         </div>
         <div class="window-body">
-          <div style="display: flex; gap: 10px; flex-direction: column;">
-            <!-- Flight Planning Content -->
-            <div style="display: flex; gap: 10px;">
-              <!-- Left side: Image -->
-              <div style="flex: 1; max-width: 48%;">
-                <div class="win98-image-container">
-                  <div class="image-container">
-                    <img src="flight_plan.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/200';" alt="LiDAR Flight Plan" style="max-height: 180px;">
-                  </div>
-                  <div style="text-align: center; margin-top: 3px; font-size: 0.8em;">
-                    Flight lines and survey area for LiDAR collection
-                  </div>
+          <div style="display: flex; gap: 10px;">
+            <!-- Left side images - stacked vertically -->
+            <div style="flex: 1; max-width: 48%;">
+              <!-- RiParameter image -->
+              <div class="win98-image-container" style="padding: 2px; margin-bottom: 6px; background-color: white;">
+                <div class="image-container" style="margin: 0;">
+                  <img src="riparameter.jpg" onerror="this.onerror=null; this.src='/api/placeholder/180/120';" alt="RiParameter Software" style="width: 100%; height: auto; object-fit: contain;">
+                </div>
+                <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
+                  Riegl's RiParameter
                 </div>
               </div>
               
-              <!-- Right side: Flight Parameters -->
-              <div style="flex: 1; max-width: 48%;">
-                <div class="section-title">Flight Parameters:</div>
-                <ul style="margin: 5px 0; padding-left: 20px; font-size: 0.9em;">
-                  <li>Flying height: 1,200m AGL</li>
-                  <li>Flight speed: 120 knots</li>
-                  <li>Swath width: 1,400m</li>
-                  <li>Side overlap: 30%</li>
-                  <li>Scan rate: 400 kHz</li>
-                  <li>Scan angle: ±30°</li>
-                </ul>
-                
-                <div style="margin-top: 8px; font-size: 0.9em; border: 1px solid #808080; padding: 6px; background-color: #f0f0f0;">
-                  <div style="font-weight: bold;">Planning Software:</div>
-                  <p style="margin: 3px 0; font-size: 0.85em;">
-                    RIEGL's Mission Planning Software was used to determine optimal flight lines based on terrain variations and desired point density, ensuring complete coverage while minimizing flight time.
-                  </p>
+              <!-- Flight lines image -->
+              <div class="win98-image-container" style="padding: 2px; background-color: white;">
+                <div class="image-container" style="margin: 0;">
+                  <img src="image2.jpg" onerror="this.onerror=null; this.src='/api/placeholder/180/120';" alt="LiDAR Flight Plan" style="width: 100%; height: auto; object-fit: contain;">
+                </div>
+                <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
+                  Flight lines over a DEM
                 </div>
               </div>
             </div>
-            
-            <!-- Bottom section: Planning Considerations -->
-            <div>
-              <div class="section-title">Planning Considerations:</div>
-              <p style="font-size: 0.9em; margin: 3px 0;">
-                Flight lines were oriented to minimize turns and optimize efficiency. Terrain-adaptive settings were implemented to maintain consistent point density across elevation changes. Ground control points were strategically placed for accurate georeferencing. Weather conditions were carefully monitored to ensure optimal data collection conditions.
-              </p>
+              
+            <!-- Right side: Planning Process box only -->
+            <div style="flex: 1; max-width: 48%;">
+              <div style="font-size: 0.9em; border: 1px solid #808080; padding: 8px; background-color: #f0f0f0;">
+                <div style="font-weight: bold;">Flight Planning Process:</div>
+                <p style="margin: 5px 0; font-size: 0.85em;">
+                  Flight planning uses RiParameter to calculate optimal settings, followed by SnapPlan to design efficient flight lines. This ensures complete coverage while balancing data quality requirements with operational efficiency and cost considerations.
+                </p>
+              </div>
             </div>
           </div>
         </div>
