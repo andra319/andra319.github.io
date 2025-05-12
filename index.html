@@ -278,7 +278,7 @@
     }
     
     /* Hide elements not needed for print */
-    .instructions-banner, .desktop-icons, .start-bar {
+    .desktop-icons {
       display: none !important;
     }
       
@@ -307,29 +307,6 @@
       align-items: center;
       padding: 0 2px;
       z-index: 1000;
-    }
-    
-    /* Instructions banner */
-    .instructions-banner {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-color: #ffffcc;
-      border-bottom: 2px solid #c0c0c0;
-      padding: 8px;
-      text-align: center;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .close-instructions {
-      cursor: pointer;
-      font-weight: bold;
-      padding: 0 5px;
     }
     
     /* Windows 98 TableView styling */
@@ -423,21 +400,6 @@
 </head>
 
 <body>
-  <!-- Instructions Banner -->
-  <div class="instructions-banner">
-    <div style="flex: 1;"></div>
-    <div style="flex: 10;">
-      This is a 17x22 inch PORTRAIT Windows 98-style poster. When printing to PDF, adjust the scale in your browser's print dialog to fit the page.
-      <br>
-      <b>Print Tips:</b> Try 35-45% scale if cropping occurs. Use "Background Graphics" option for colors.
-      <br>
-      <b>Image Instructions:</b> Replace image files with your actual LiDAR workflow images.
-    </div>
-    <div style="flex: 1; text-align: right;">
-      <span class="close-instructions" onclick="this.parentElement.parentElement.style.display='none';">×</span>
-    </div>
-  </div>
-  
   <div class="print-container">
     <div class="poster">
       <!-- Title Window -->
@@ -453,7 +415,7 @@
         <div class="window-body" style="position: relative; padding: 10px 0;">
           <!-- First logo on the left -->
           <div style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%);">
-            <img src="CARD-LOGO-NameTransparent-round-small.png" onerror="this.onerror=null; this.src='/api/placeholder/80/80';" alt="Eagle Mapping Logo" style="width: 80px; height: 80px; object-fit: contain;">
+            <img src="email signature logo.png" onerror="this.onerror=null; this.src='/api/placeholder/80/80';" alt="Eagle Mapping Logo" style="width: 80px; height: 80px; object-fit: contain;">
           </div>
           
           <!-- Second logo on the right -->
@@ -694,40 +656,25 @@
             <button aria-label="Close"></button>
           </div>
         </div>
-        <div class="window-body">
-          <div style="display: flex; gap: 10px;">
-            <!-- Left side images - stacked vertically -->
-            <div style="flex: 1; max-width: 48%;">
-              <!-- RiParameter image -->
-              <div class="win98-image-container" style="padding: 2px; margin-bottom: 6px; background-color: white;">
-                <div class="image-container" style="margin: 0;">
-                  <img src="riparameter.jpg" onerror="this.onerror=null; this.src='/api/placeholder/180/120';" alt="RiParameter Software" style="width: 100%; height: auto; object-fit: contain;">
-                </div>
-                <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
-                  Riegl's RiParameter
-                </div>
-              </div>
-              
-              <!-- Flight lines image -->
-              <div class="win98-image-container" style="padding: 2px; background-color: white;">
-                <div class="image-container" style="margin: 0;">
-                  <img src="image2.jpg" onerror="this.onerror=null; this.src='/api/placeholder/180/120';" alt="LiDAR Flight Plan" style="width: 100%; height: auto; object-fit: contain;">
-                </div>
-                <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
-                  Flight lines over a DEM
-                </div>
-              </div>
+        <div class="window-body" style="padding: 4px;">
+          <!-- Image container with Windows 98 styling but minimal padding -->
+          <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+            <div class="image-container" style="margin: 0;">
+              <img src="qcflightplus.jpg" onerror="this.onerror=null; this.src='/api/placeholder/180/120';" alt="LiDAR Flight Plan" style="width: 100%; height: auto; max-height: 350px; object-fit: contain; display: block;">
             </div>
-              
-            <!-- Right side: Planning Process box only -->
-            <div style="flex: 1; max-width: 48%;">
-              <div style="font-size: 0.9em; border: 1px solid #808080; padding: 8px; background-color: #f0f0f0;">
-                <div style="font-weight: bold;">Flight Planning Process:</div>
-                <p style="margin: 5px 0; font-size: 0.85em;">
-                  Flight planning uses RiParameter to calculate optimal settings, followed by SnapPlan to design efficient flight lines. This ensures complete coverage while balancing data quality requirements with operational efficiency and cost considerations.
-                </p>
-              </div>
+            <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
+              Flight lines over a DEM
             </div>
+          </div>
+          
+          <div style="margin-top: 8px; font-size: 0.9em; border: 1px solid #808080; padding: 6px; background-color: #f0f0f0;">
+            <div style="font-weight: bold;">Creating a flight plan:</div>
+            <ul style="margin: 3px 0; padding-left: 20px; font-size: 0.85em;">
+              <li>Lines are drawn according to required overlap</li>
+              <li>The plan is created over a DEM for terrain variations</li>
+              <li>Precision: ±15mm</li>
+              <li>Maximum range: 2,500m</li>
+            </ul>
           </div>
         </div>
       </div>
