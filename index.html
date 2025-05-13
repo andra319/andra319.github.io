@@ -23,18 +23,18 @@
 
     /* Override specifically for elements that should remain relatively smaller */
     .side-panel-content * {
-      font-size: 20px !important; /* Slightly smaller for side panels but still readable */
+      font-size: 14px !important; /* Slightly smaller for side panels but still readable */
     }
 
     /* Image captions */
     .win98-image-container div {
-      font-size: 18px !important;
+      font-size: 16px !important;
     }
 
     /* Table text */
     table.interactive th, 
     table.interactive td {
-      font-size: 20px !important;
+      font-size: 18px !important;
     }
 
     /* Flowchart items */
@@ -45,6 +45,7 @@
     .flowchart-item div {
       font-size: 20px !important;
     }
+
     /* Set up the poster dimensions and background */
     body {
       margin: 0;
@@ -58,7 +59,7 @@
     
     /* First, increase the overall container width */
     .print-container {
-      width: 95%; /* Change from 17in to 95% of viewport width */
+      width: 100%; /* Change from 17in to 95% of viewport width */
       max-width: 1800px; /* Increase from 1224px to a much larger value */
       height: auto; 
       min-height: 22in;
@@ -87,7 +88,7 @@
     .abstract-window {
       grid-column: 2 / 4;
       grid-row: 2;
-      min-height: auto;
+      height: fit-content; /* Change from min-height: auto to make it fit the content */
     }
     /* Reduce spacing in abstract window */
     .abstract-window .window-body {
@@ -122,19 +123,15 @@
       grid-row: 5;
     }
 
-    .results-applications-window {
-      grid-column: 2 / 4;
-      grid-row: 6;
-    }
-
     .conclusion-window {
-      grid-column: 2;
+      grid-column: 1 / 3; /* Change from just column 2 to span columns 1-2 */
       grid-row: 7;
     }
 
     .references-window {
       grid-column: 3;
       grid-row: 7;
+      font-size: 14px !important;
     }
 
     /* Side panel windows - these will be in column 1 */
@@ -146,7 +143,7 @@
 
     .glossary-panel-window {
       grid-column: 1;
-      grid-row: 5 / 8; /* Spans rows 5-7 */
+      grid-row: 5 / 7; 
       height: auto;
     }
 
@@ -292,6 +289,9 @@
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
+      img {
+        image-resolution: 300dpi;
+      }
     }
     
     /* Start Menu */
@@ -405,7 +405,7 @@
       <!-- Title Window -->
       <div class="title-window window">
         <div class="title-bar">
-          <div class="title-bar-text">BCIT GIS Practicum - LiDAR Workflow</div>
+          <div class="title-bar-text">BCIT GIS Practicum - Eagle Mapping</div>
           <div class="title-bar-controls">
             <button aria-label="Minimize"></button>
             <button aria-label="Maximize"></button>
@@ -426,9 +426,9 @@
           </div>
           <!-- Centered title -->
           <div style="text-align: center; padding: 0 110px;">
-            <h1 style="font-size: 32px; margin: 0;">LiDAR Workflow at Eagle Mapping</h1>
+            <h1 style="font-size: 36px; margin: 0;">Andrew's Industry Practicum at Eagle Mapping</h1>
             <p style="margin: 10px 0 0 0;">
-              <span style="color: purple; font-weight: bold;">✨ Aerial LiDAR Acquisition & Processing ✨</span>
+              <span style="color: purple; font-weight: bold;">✨ Aerial Imagery Acquisition & Processing ✨</span>
             </p>
           </div>
         </div>
@@ -437,7 +437,7 @@
       <!-- LiDAR Theory Side Panel (Left Top) -->
       <div class="theory-panel-window window">
         <div class="title-bar">
-          <div class="title-bar-text">LiDAR Theory</div>
+          <div class="title-bar-text">Theory</div>
           <div class="title-bar-controls">
             <button aria-label="Minimize"></button>
             <button aria-label="Maximize"></button>
@@ -453,9 +453,8 @@
             
             <div class="win98-image-container" style="margin: 8px 0;">
               <div class="image-container">
-                <img src="Plane-Scan (2).jpg" onerror="this.onerror=null; this.src='/api/placeholder/180/120';" alt="LiDAR Theory" style="max-height: 120px;">
+                <img src="Plane-Scan (2).jpg" onerror="this.onerror=null; this.src='/api/placeholder/180/120';" alt="LiDAR Theory" style="max-height: 200px;">
               </div>
-              <div style="text-align: center; margin-top: 3px; font-size: 0.7em;">LiDAR operating principle</div>
             </div>
             
             <div class="section-title">Key Components:</div>
@@ -471,19 +470,16 @@
               <thead>
                 <tr>
                   <th>Type</th>
-                  <th>Wavelength</th>
                   <th>Use</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>NIR</td>
-                  <td>1064nm</td>
                   <td>Topographic</td>
                 </tr>
                 <tr>
                   <td>Green</td>
-                  <td>532nm</td>
                   <td>Bathymetric</td>
                 </tr>
               </tbody>
@@ -499,13 +495,14 @@
               <li><b>Last Return:</b> Often ground surface</li>
             </ul>
             
-            <div class="section-title" style="margin-top: 10px;">Accuracy Factors:</div>
+            <div class="section-title" style="margin-top: 10px;">Point Cloud Generation:</div>
+            <p style="font-size: 0.85em; margin: 3px 0;">
+              LiDAR creates detailed 3D representations through:
+            </p>
             <ul style="font-size: 0.85em; margin: 3px 0; padding-left: 20px;">
-              <li>Flying height</li>
-              <li>Scan angle</li>
-              <li>GPS/IMU precision</li>
-              <li>Atmospheric conditions</li>
-              <li>Target reflectivity</li>
+              <li><b>Time of Flight:</b> Measures time between pulse emission and return</li>
+              <li><b>Coordinate Assignment:</b> Combines with GPS/IMU data for XYZ position</li>
+              <li><b>Point Cloud Formation:</b> Millions of points create 3D representation</li>
             </ul>
           </div>
         </div>
@@ -532,8 +529,8 @@
                 <dt style="font-weight: bold; color: #000080;">AGL</dt>
                 <dd style="margin-left: 15px; margin-bottom: 8px;">Above Ground Level - Height measurement from ground surface rather than sea level.</dd>
                 
-                <dt style="font-weight: bold; color: #000080;">Bare Earth DEM</dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">Digital Elevation Model containing only ground points with vegetation and buildings removed.</dd>
+                <dt style="font-weight: bold; color: #000080;">PPM</dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">Points Per Meter - the number of points for each imaged meter, AKA resolution.</dd>
                 
                 <dt style="font-weight: bold; color: #000080;">DSM</dt>
                 <dd style="margin-left: 15px; margin-bottom: 8px;">Digital Surface Model - Represents the earth's surface including all objects (buildings, vegetation).</dd>
@@ -541,32 +538,32 @@
                 <dt style="font-weight: bold; color: #000080;">DTM</dt>
                 <dd style="margin-left: 15px; margin-bottom: 8px;">Digital Terrain Model - Representation of bare ground surface without objects.</dd>
                 
-                <dt style="font-weight: bold; color: #000080;">GCP</dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">Ground Control Point - Surveyed point with known coordinates used for georeferencing.</dd>
+                <dt style="font-weight: bold; color: #000080;">PRR</dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">The diameter of the beam at the target's range.</dd>
                 
-                <dt style="font-weight: bold; color: #000080;">GSD</dt>
+                <dt style="font-weight: bold; color: #000080;">Laser Footprint</dt>
                 <dd style="margin-left: 15px; margin-bottom: 8px;">Ground Sampling Distance - Distance between pixel centers on the ground.</dd>
                 
                 <dt style="font-weight: bold; color: #000080;">IMU</dt>
                 <dd style="margin-left: 15px; margin-bottom: 8px;">Inertial Measurement Unit - Device that measures aircraft orientation and movement.</dd>
-                
-                <dt style="font-weight: bold; color: #000080;">Intensity</dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">Strength of the return signal, affected by surface reflectivity.</dd>
                 
                 <dt style="font-weight: bold; color: #000080;">LAS/LAZ</dt>
                 <dd style="margin-left: 15px; margin-bottom: 8px;">Industry-standard file formats for LiDAR point clouds (LAZ is compressed).</dd>
                 
                 <dt style="font-weight: bold; color: #000080;">Point Cloud</dt>
                 <dd style="margin-left: 15px; margin-bottom: 8px;">Collection of data points in 3D space, each with X, Y, Z coordinates.</dd>
-                
-                <dt style="font-weight: bold; color: #000080;">Point Density</dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">Number of points per square meter, indicating data resolution.</dd>
-                
-                <dt style="font-weight: bold; color: #000080;">RMSE</dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">Root Mean Square Error - Statistical measure of positional accuracy.</dd>
-                
-                <dt style="font-weight: bold; color: #000080;">SBET</dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">Smoothed Best Estimate of Trajectory - Processed flight path data.</dd>
+
+                <dt style="font-weight: bold; color: #000080;">Max Range</dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">The maximum achievable distance at which a scanner can perform range measurements.</dd>
+
+                <dt style="font-weight: bold; color: #000080;">GNSS<dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">Global Navigation Satellite System - Satellite navigation system with global coverage.</dd>
+
+                <dt style="font-weight: bold; color: #000080;">Swath</dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">The lateral spread of LiDAR pulses over terrain. Swath width increases at higher AGLs.</dd>
+
+                <dt style="font-weight: bold; color: #000080;">Overlap</dt>
+                <dd style="margin-left: 15px; margin-bottom: 8px;">The point at which parallel swaths overlap, resulting in additional coverage.</dd>
               </dl>
             </div>
           </div>
@@ -578,7 +575,7 @@
         <div class="title-bar">
           <div class="title-bar-text">Abstract</div>
           <div class="title-bar-controls">
-            <button aria-label="Minimize"></button>
+            <button aria-label="Minimize" disabled></button>
             <button aria-label="Maximize"></button>
             <button aria-label="Close"></button>
           </div>
@@ -660,10 +657,10 @@
           <!-- Image container with Windows 98 styling but minimal padding -->
           <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
             <div class="image-container" style="margin: 0;">
-              <img src="qcflightplus.jpg" onerror="this.onerror=null; this.src='/api/placeholder/180/120';" alt="LiDAR Flight Plan" style="width: 100%; height: auto; max-height: 350px; object-fit: contain; display: block;">
+              <img src="qcflightmerge.jpg" onerror="this.onerror=null; this.src='/api/placeholder/180/120';" alt="LiDAR Flight Plan" style="width: 100%; height: auto; max-height: 350px; object-fit: contain; display: block;">
             </div>
             <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
-              Flight lines over a DEM
+              Drawing flight lines over Digital Elevation Models in SnapPlan
             </div>
           </div>
           
@@ -672,8 +669,7 @@
             <ul style="margin: 3px 0; padding-left: 20px; font-size: 0.85em;">
               <li>Lines are drawn according to required overlap</li>
               <li>The plan is created over a DEM for terrain variations</li>
-              <li>Precision: ±15mm</li>
-              <li>Maximum range: 2,500m</li>
+              <li>Some areas require special plans. Push plans, for example, ensure that when the required point density is not being met, like when flying over valleys in mountaineous regions, triple coverage is achieved</li>
             </ul>
           </div>
         </div>
@@ -688,46 +684,52 @@
             <button aria-label="Close"></button>
           </div>
         </div>
-        <div class="window-body">
+        <div class="window-body" style="padding: 4px;">
           <div style="display: flex; gap: 10px; align-items: flex-start;">
-            <!-- Left side: Aircraft Image -->
-            <div style="flex: 1; max-width: 48%;">
-              <div class="win98-image-container">
-                <div class="image-container">
-                  <img src="image5.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/200';" alt="Cessna 210 with RIEGL LiDAR" style="max-height: 180px;">
-                </div>
-                <div style="text-align: center; margin-top: 3px; font-size: 0.8em;">Cessna 210 with RIEGL LiDAR scanner</div>
-              </div>
-            </div>
-            
-            <!-- Right side: Equipment Details -->
-            <div style="flex: 1; max-width: 48%;">
-              <div class="section-title">Equipment Used:</div>
+            <!-- Left side: Equipment Details -->
+            <div style="flex: 3; max-width: 60%;">
+              <div class="section-title">Acquisition Equipment:</div>
               <ul style="margin: 5px 0; padding-left: 20px; font-size: 0.9em;">
-                <li>Aircraft: Cessna 210</li>
-                <li>LiDAR Scanner: RIEGL VQ-780i</li>
-                <li>IMU/GNSS: Applanix POS AV 610</li>
-                <li>Data Recorder: RIEGL RiACQUIRE</li>
+                <li>Aircraft: Eagle Mapping owns and leases several aircraft throughout North America</li>
+                <li>Planes typically fly between 120-150kts</li>
+                <li>These planes are equipped with various RIEGL LiDAR scanners, such as the VQ-1560II-S pictured</li>
+                <li>Medium format cameras, such as the 150 megapixel PhaseOne iXM-RS150F, are used for ultra-high resolution imagery</li>
               </ul>
               
               <div style="margin-top: 8px; font-size: 0.9em; border: 1px solid #808080; padding: 6px; background-color: #f0f0f0;">
-                <div style="font-weight: bold;">RIEGL VQ-780i Specifications:</div>
+                <div style="font-weight: bold;">LiDAR Operators:</div>
                 <ul style="margin: 3px 0; padding-left: 20px; font-size: 0.85em;">
-                  <li>Measurement rate: up to 1 MHz</li>
-                  <li>Accuracy: ±20mm</li>
-                  <li>Precision: ±15mm</li>
-                  <li>Maximum range: 2,500m</li>
+                  <li>Acquisition could not be achieved without the hard work of a LiDAR Operator</li>
+                  <li>Their job is to ensure that data is being recorded properly and that specs are being met</li>
+                  <li>If the equipment fails or the plane was flying too fast, low, or high, it's the operator's job to communicate with the pilot that a line needs to be reflown</li>
+                  <li>Operators may fly several hours a day, for several days on end, far away from home</li>
+                  <li>Eagle Mapping conducts operations across North America inculding Canada, the US, Mexico, Columbia, Guatemala and more</li>
                 </ul>
               </div>
             </div>
-          </div>
-          
-          <!-- Bottom section: Data Collection -->
-          <div style="margin-top: 10px;">
-            <div class="section-title">Data Collection Process:</div>
-            <p style="font-size: 0.9em; margin: 3px 0;">
-              During flight operations, the RIEGL VQ-780i scanner emits near-infrared laser pulses that reflect off ground features and return to the sensor. The system records the time difference between pulse emission and return to calculate distance. Simultaneously, the integrated IMU/GNSS system records precise aircraft position and orientation. Together, these systems allow for accurate 3D positioning of each laser return point in real-time.
-            </p>
+            
+            <!-- Right side: Stacked Images -->
+            <div style="flex: 2; max-width: 38%;">
+              <!-- Navajo Aircraft Image -->
+              <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0 0 8px 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+                <div class="image-container" style="margin: 0;">
+                  <img src="Navajo.jpg" onerror="this.onerror=null; this.src='/api/placeholder/180/180';" alt="Piper Navajo Aircraft" style="width: 100%; height: auto; max-height: 170px; object-fit: contain; display: block;">
+                </div>
+                <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
+                  Piper Navajo
+                </div>
+              </div>
+              
+              <!-- 1560 LiDAR Scanner Image -->
+              <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+                <div class="image-container" style="margin: 0;">
+                  <img src="1560.jpg" onerror="this.onerror=null; this.src='/api/placeholder/180/180';" alt="RIEGL LMS-Q1560 Scanner" style="width: 100%; height: auto; max-height: 170px; object-fit: contain; display: block;">
+                </div>
+                <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
+                  VQ-1560II-S
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -741,24 +743,37 @@
             <button aria-label="Close"></button>
           </div>
         </div>
-        <div class="window-body">
-          <div style="display: flex; gap: 10px;">
-            <!-- Left side: Processing Software Screenshot -->
+        <div class="window-body" style="padding: 8px;">
+          <!-- Top section: Trajectory Processing -->
+          <div>
+            <div class="section-title">Trajectory Processing:</div>
+            <p style="font-size: 0.9em; margin: 3px 0;">
+              A critical first step in LiDAR processing involves accurately determining the aircraft's position and orientation throughout the flight. This is achieved by processing GNSS and IMU data using Applanix POSPac MMS software, generating a Smoothed Best Estimate of Trajectory (SBET) file.
+            </p>
+          </div>
+          
+          <div style="display: flex; gap: 10px; margin-top: 10px;">
+            <!-- Left side: Two images in one container -->
             <div style="flex: 1; max-width: 48%;">
-              <div class="win98-image-container">
-                <div class="image-container">
-                  <img src="lidar_processing.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/200';" alt="LiDAR Processing Software" style="max-height: 180px;">
+              <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+                <!-- Two images stacked vertically -->
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                  <!-- Trajectory image -->
+                  <div>
+                    <img src="Udey's flight.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/120';" alt="Flight Trajectory" style="width: 100%; height: auto; max-height: 120px; object-fit: contain; display: block;">
+                    <div style="text-align: center; margin-top: 2px; font-size: 0.8em; border-bottom: 1px dashed #c0c0c0; padding-bottom: 4px;">
+                      Flight trajectory over Vancouver
+                    </div>
+                  </div>
+                  
+                  <!-- Point cloud image -->
+                  <div>
+                    <img src="Textured intensity-small.png" onerror="this.onerror=null; this.src='/api/placeholder/350/120';" alt="Point Cloud" style="width: 100%; height: auto; max-height: 120px; object-fit: contain; display: block;">
+                    <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
+                      Resulting point cloud in RiProcess
+                    </div>
+                  </div>
                 </div>
-                <div style="text-align: center; margin-top: 3px; font-size: 0.8em;">RIEGL RiPROCESS software interface</div>
-              </div>
-              
-              <div style="margin-top: 8px; font-size: 0.8em; border: 1px solid #808080; padding: 6px; background-color: #f0f0f0;">
-                <div style="font-weight: bold;">Processing Software:</div>
-                <ul style="margin: 3px 0; padding-left: 20px; font-size: 0.85em;">
-                  <li>RIEGL RiPROCESS</li>
-                  <li>TerraSolid TerraScan</li>
-                  <li>Global Mapper</li>
-                </ul>
               </div>
             </div>
             
@@ -766,30 +781,29 @@
             <div style="flex: 1; max-width: 48%;">
               <div class="section-title">Processing Workflow:</div>
               <ol style="margin: 5px 0; padding-left: 20px; font-size: 0.9em;">
-                <li>Import raw LiDAR data and trajectory</li>
+                <li>Import GNSS/IMU data to POSPac</li>
+                <li>Process data to generate SBET solution</li>
+                <li>Import SBET and raw LiDAR data to RiProcess</li>
                 <li>Apply system calibration parameters</li>
-                <li>Filter outlier points and noise</li>
-                <li>Adjust flight line alignment</li>
-                <li>Absolute accuracy adjustment using GCPs</li>
-                <li>Strip alignment and adjustment</li>
-                <li>Generate preliminary point cloud</li>
+                <li>Georeference points to trajectory</li>
+                <li>Generate point cloud with coordinate transform</li>
               </ol>
               
-              <div class="section-title" style="margin-top: 5px;">Quality Control Metrics:</div>
+              <div class="section-title" style="margin-top: 5px;">Quality Control:</div>
               <ul style="margin: 5px 0; padding-left: 20px; font-size: 0.9em;">
-                <li>Point density verification: 8-12 points/m²</li>
-                <li>Flight line overlap verification: >30%</li>
-                <li>Vertical accuracy: ±15cm RMSE</li>
-                <li>Point cloud completeness: >99%</li>
+                <li>GNSS position accuracy: &lt;5cm</li>
+                <li>IMU attitude accuracy: &lt;0.005°</li>
+                <li>Point cloud vertical accuracy: ±15cm RMSE</li>
+                <li>Flight line overlap consistency: ±8cm</li>
               </ul>
             </div>
           </div>
           
-          <!-- Bottom section: Trajectory Processing -->
-          <div style="margin-top: 10px;">
-            <div class="section-title">Trajectory Processing:</div>
-            <p style="font-size: 0.9em; margin: 3px 0;">
-              A critical step in LiDAR processing involves accurately determining the aircraft's position and orientation throughout the flight. This is achieved by processing GNSS and IMU data using Applanix POSPac MMS software, generating a Smoothed Best Estimate of Trajectory (SBET) file. The SBET is then combined with raw laser measurements to generate an accurately georeferenced point cloud.
+          <!-- Bottom note -->
+          <div style="margin-top: 10px; font-size: 0.9em; border: 1px solid #808080; padding: 6px; background-color: #f0f0f0;">
+            <div style="font-weight: bold;">Point Cloud Generation:</div>
+            <p style="margin: 3px 0; font-size: 0.85em;">
+              After trajectory processing, the SBET file is combined with raw laser measurements in RiProcess to generate an accurately georeferenced point cloud. Each point is assigned precise XYZ coordinates based on the aircraft's position, scanner angle, and measured distance. The resulting point cloud is the foundation for all downstream LiDAR products.
             </p>
           </div>
         </div>
@@ -806,17 +820,9 @@
         </div>
         <div class="window-body">
           <div style="display: flex; gap: 10px;">
-            <!-- Left side: Classification Software Screenshot -->
-            <div style="flex: 1; max-width: 48%;">
-              <div class="win98-image-container">
-                <div class="image-container">
-                  <img src="classification.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/200';" alt="LiDAR Classification" style="max-height: 180px;">
-                </div>
-                <div style="text-align: center; margin-top: 3px; font-size: 0.8em;">Point cloud classification in TerraSolid</div>
-              </div>
-            </div>
             
-            <!-- Right side: Classification Methodology -->
+            
+            <!-- Left side: Classification Methodology -->
             <div style="flex: 1; max-width: 48%;">
               <div class="section-title">Classification Categories:</div>
               <table class="interactive" style="margin-top: 5px; font-size: 0.9em;">
@@ -845,7 +851,7 @@
                   </tr>
                   <tr>
                     <td>7</td>
-                    <td>Low Noise</td>
+                    <td>Noise</td>
                   </tr>
                   <tr>
                     <td>9</td>
@@ -855,12 +861,18 @@
                     <td>17</td>
                     <td>Bridge Decks</td>
                   </tr>
-                  <tr>
-                    <td>18</td>
-                    <td>High Noise</td>
-                  </tr>
                 </tbody>
               </table>
+            </div>
+            <!-- Right side: Classification Software Screenshot - adjusted for portrait orientation -->
+            <div style="max-width: 35%; height: 400px;"> <!-- Reduced width from 48% to 35% -->
+              <div class="win98-image-container" style="height: 95%;"> <!-- Added height to container -->
+                <div class="image-container" style="height: 95%;"> <!-- Made image container taller -->
+                  <img src="Forestry-2018.jpg" onerror="this.onerror=null; this.src='/api/placeholder/180/350';" 
+                      alt="LiDAR Classification" 
+                      style="width: 100%; max-height: 500px; object-fit: contain; display: block;"> <!-- Increased max-height, adjusted fit -->
+                </div>
+              </div>
             </div>
           </div>
           
@@ -870,177 +882,82 @@
             <p style="font-size: 0.9em; margin: 3px 0;">
               Point cloud classification follows a semi-automated approach using TerraSolid software. First, algorithmic methods identify ground points using a progressive densification method. Next, vegetation points are classified based on height above ground and return characteristics. Buildings are identified using planar surface detection. Manual review and refinement ensures classification accuracy exceeds 98% when compared to control samples.
             </p>
-            
-            <div style="margin-top: 8px; font-size: 0.8em; border: 1px solid #808080; padding: 6px; background-color: #f0f0f0;">
-              <div style="font-weight: bold; color: purple;">✨ Classification Accuracy ✨</div>
-              <p style="margin: 3px 0; font-size: 0.85em;">
-                Manual verification of randomly selected areas confirmed 98.5% classification accuracy, exceeding the project requirement of 95%. Ground classification achieved the highest accuracy at 99.2%, while vegetation classification ranged from 96.8-98.3% depending on density.
-              </p>
-            </div>
           </div>
         </div>
       </div>
-      <!-- Results & Applications Window -->
-      <div class="results-applications-window window">
-        <div class="title-bar">
-          <div class="title-bar-text">Results & Applications</div>
-          <div class="title-bar-controls">
-            <button aria-label="Minimize"></button>
-            <button aria-label="Maximize"></button>
-            <button aria-label="Close"></button>
-          </div>
-        </div>
-        <div class="window-body">
-          <div style="display: flex; gap: 15px;">
-            <!-- Left side: Results section -->
-            <div style="flex: 1; max-width: 48%;">
-              <div class="section-title" style="color: purple; font-weight: bold;">✨ Key Deliverables: ✨</div>
-              <ul style="margin: 5px 0; padding-left: 20px; font-size: 0.9em;">
-                <li>Classified LiDAR point cloud (LAZ format)</li>
-                <li>Digital Terrain Model (DTM) - bare earth</li>
-                <li>Digital Surface Model (DSM) - all features</li>
-                <li>Contour lines (0.5m intervals)</li>
-                <li>Intensity image</li>
-              </ul>
-              
-              <div class="win98-image-container" style="margin-top: 10px;">
-                <div class="image-container">
-                  <img src="lidar_deliverables.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/200';" alt="LiDAR Deliverables" style="max-height: 180px;">
-                </div>
-                <div style="text-align: center; margin-top: 3px; font-size: 0.8em;">3D visualization of classified point cloud</div>
-              </div>
-              
-              <div style="margin-top: 8px; font-size: 0.8em; border: 1px solid #808080; padding: 6px; background-color: #f0f0f0;">
-                <div style="font-weight: bold;">Quality Assessment:</div>
-                <table style="width: 100%; font-size: 0.9em; border-collapse: collapse;">
-                  <tr>
-                    <td>Vertical Accuracy:</td>
-                    <td>±12cm RMSE</td>
-                  </tr>
-                  <tr>
-                    <td>Horizontal Accuracy:</td>
-                    <td>±18cm RMSE</td>
-                  </tr>
-                  <tr>
-                    <td>Point Density:</td>
-                    <td>9.6 points/m² average</td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-            
-            <!-- Right side: Applications section -->
-            <div style="flex: 1; max-width: 48%;">
-              <div class="section-title">Applications:</div>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 5px;">
-                <!-- Application 1 -->
-                <div class="win98-image-container" style="padding: 5px;">
-                  <div style="font-weight: bold; font-size: 0.9em; text-align: center;">Flood Modeling</div>
-                  <div class="image-container" style="margin: 5px 0;">
-                    <img src="flood_model.jpg" onerror="this.onerror=null; this.src='/api/placeholder/150/100';" alt="Flood Modeling" style="max-height: 100px;">
-                  </div>
-                  <p style="font-size: 0.8em; margin: 0;">
-                    High-precision DTMs enable accurate floodplain mapping and hydraulic modeling.
-                  </p>
-                </div>
-                
-                <!-- Application 2 -->
-                <div class="win98-image-container" style="padding: 5px;">
-                  <div style="font-weight: bold; font-size: 0.9em; text-align: center;">Forestry</div>
-                  <div class="image-container" style="margin: 5px 0;">
-                    <img src="forestry.jpg" onerror="this.onerror=null; this.src='/api/placeholder/150/100';" alt="Forestry" style="max-height: 100px;">
-                  </div>
-                  <p style="font-size: 0.8em; margin: 0;">
-                    Tree height, density, and canopy cover analysis for forest inventory.
-                  </p>
-                </div>
-                
-                <!-- Application 3 -->
-                <div class="win98-image-container" style="padding: 5px;">
-                  <div style="font-weight: bold; font-size: 0.9em; text-align: center;">Infrastructure</div>
-                  <div class="image-container" style="margin: 5px 0;">
-                    <img src="infrastructure.jpg" onerror="this.onerror=null; this.src='/api/placeholder/150/100';" alt="Infrastructure" style="max-height: 100px;">
-                  </div>
-                  <p style="font-size: 0.8em; margin: 0;">
-                    Corridor mapping for transmission lines, roads, and railways.
-                  </p>
-                </div>
-                
-                <!-- Application 4 -->
-                <div class="win98-image-container" style="padding: 5px;">
-                  <div style="font-weight: bold; font-size: 0.9em; text-align: center;">Mining</div>
-                  <div class="image-container" style="margin: 5px 0;">
-                    <img src="mining.jpg" onerror="this.onerror=null; this.src='/api/placeholder/150/100';" alt="Mining" style="max-height: 100px;">
-                  </div>
-                  <p style="font-size: 0.8em; margin: 0;">
-                    Volumetric calculations and pit monitoring for resource extraction.
-                  </p>
-                </div>
-              </div>
-              
-              <div style="margin-top: 8px; font-size: 0.9em;">
-                <div class="section-title">Client Case Study:</div>
-                <p style="font-size: 0.85em; margin: 3px 0;">
-                  LiDAR data from this project was used by BC Hydro for corridor mapping of transmission lines. The high-resolution point cloud enabled precise measurement of vegetation encroachment and identification of potential hazard trees, leading to targeted maintenance operations and improved reliability.
-                </p>
-              </div>
-            </div>
-          </div>
+
+      <!-- Wide Photo Divider -->
+      <div style="grid-column: 2 / 4; grid-row: 6 / 7; margin: 0 0 12px 0; padding: 0;">
+        <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf; height: auto;">
+          <img src="hag_dk_blue_vanc_water-r1_med.jpg" onerror="this.onerror=null; this.src='/api/placeholder/800/120';" alt="Panoramic View" style="width: 100%; height: auto; max-height: 150px; object-fit: cover; display: block;">
         </div>
       </div>
-      <!-- Conclusion Window -->
+      <!-- LiDAR Product Examples Window -->
       <div class="conclusion-window window">
         <div class="title-bar">
-          <div class="title-bar-text">Conclusion & Lessons Learned</div>
+          <div class="title-bar-text">LiDAR Product Examples</div>
           <div class="title-bar-controls">
             <button aria-label="Minimize"></button>
             <button aria-label="Maximize"></button>
             <button aria-label="Close"></button>
           </div>
         </div>
-        <div class="window-body">
-          <div class="section-title" style="color: purple; font-weight: bold;">✨ Key Learnings: ✨</div>
-          <ul style="margin: 5px 0; padding-left: 20px; font-size: 0.9em;">
-            <li>Integration of hardware and software components is critical to efficient LiDAR workflows</li>
-            <li>Quality control at each stage ensures high-accuracy final products</li>
-            <li>Semi-automated classification with manual verification achieves optimal results</li>
-            <li>Careful flight planning significantly impacts data quality and project economics</li>
-          </ul>
-          
-          <div style="margin-top: 10px;">
-            <div class="section-title">Challenges & Solutions:</div>
-            <table class="interactive" style="margin-top: 5px; font-size: 0.9em;">
-              <thead>
-                <tr>
-                  <th>Challenge</th>
-                  <th>Solution</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Weather delays</td>
-                  <td>Flexible scheduling and monitoring systems</td>
-                </tr>
-                <tr>
-                  <td>Dense vegetation</td>
-                  <td>Multiple flight lines with increased overlap</td>
-                </tr>
-                <tr>
-                  <td>Large data volumes</td>
-                  <td>Optimized storage and processing infrastructure</td>
-                </tr>
-                <tr>
-                  <td>Building classification</td>
-                  <td>Enhanced algorithms with manual verification</td>
-                </tr>
-              </tbody>
-            </table>
+        <div class="window-body" style="padding: 8px;">
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between;">
+            <!-- Product Example 1 -->
+            <div style="width: calc(50% - 6px);">
+              <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+                <div class="image-container" style="margin: 0;">
+                  <img src="Ortho_Plot.jpg" onerror="this.onerror=null; this.src='/api/placeholder/250/150';" alt="Digital Terrain Model" style="width: 100%; height: auto; max-height: 250px; object-fit: contain; display: block;">
+                </div>
+                <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
+                  Digital Terrain Model (DTM)
+                </div>
+              </div>
+            </div>
+            
+            <!-- Product Example 2 -->
+            <div style="width: calc(50% - 6px);">
+              <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+                <div class="image-container" style="margin: 0;">
+                  <img src="Chilliwack_DSM+Int.jpg" onerror="this.onerror=null; this.src='/api/placeholder/250/150';" alt="Digital Surface Model" style="width: 100%; height: auto; max-height: 250px; object-fit: contain; display: block;">
+                </div>
+                <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
+                  Surface and Elevations
+                </div>
+              </div>
+            </div>
+            
+            <!-- Product Example 3 -->
+            <div style="width: calc(50% - 6px);">
+              <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+                <div class="image-container" style="margin: 0;">
+                  <img src="Plot.jpg" onerror="this.onerror=null; this.src='/api/placeholder/250/150';" alt="Contour Map" style="width: 100%; height: auto; max-height: 250px; object-fit: contain; display: block;">
+                </div>
+                <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
+                  Contour Map Variations
+                </div>
+              </div>
+            </div>
+            
+            <!-- Product Example 4 -->
+            <div style="width: calc(50% - 6px);">
+              <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+                <div class="image-container" style="margin: 0;">
+                  <img src="GoldenGate-Wallpaper.jpg" onerror="this.onerror=null; this.src='/api/placeholder/250/150';" alt="Classified Point Cloud" style="width: 100%; height: auto; max-height: 250px; object-fit: contain; display: block;">
+                </div>
+                <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
+                  Golden Gate Bridge - Colourized Point Cloud
+                </div>
+              </div>
+            </div>
           </div>
           
+          <!-- Optional: Brief description at the bottom -->
           <div style="margin-top: 10px; font-size: 0.9em; border: 1px solid #808080; padding: 6px; background-color: #f0f0f0;">
-            <div style="font-weight: bold;">Practicum Summary:</div>
+            <div style="font-weight: bold;">LiDAR Product Uses:</div>
             <p style="margin: 3px 0; font-size: 0.85em;">
-              This practicum experience at Eagle Mapping provided comprehensive training across the entire LiDAR workflow, from acquisition planning to final product delivery. The skills gained in data collection, processing, and quality control procedures align directly with industry standards and best practices. The hands-on experience with professional-grade equipment and software has provided a solid foundation for future work in LiDAR mapping and GIS applications.
+              Eagle Mapping delivers high-precision LiDAR products for various applications including flood modeling, forestry inventory, corridor mapping, and urban planning. Products are delivered in industry-standard formats (LAS/LAZ, GeoTIFF, DWG) with documentation.
             </p>
           </div>
         </div>
@@ -1055,8 +972,9 @@
             <button aria-label="Close"></button>
           </div>
         </div>
-        <div class="window-body">
-          <div style="display: flex; gap: 15px;">
+        <div class="window-body" style="padding: 8px;">
+          <!-- Top row with two columns -->
+          <div style="display: flex; gap: 15px; margin-bottom: 15px;">
             <!-- Left side: References -->
             <div style="flex: 1; max-width: 48%;">
               <div class="section-title">Technical References:</div>
@@ -1067,50 +985,47 @@
                 <li>Natural Resources Canada (2023). <i>Standards and Guidelines for LiDAR Acquisition.</i> Ottawa, Canada.</li>
                 <li>Eagle Mapping Ltd. (2024). <i>Standard Operating Procedures for Aerial LiDAR Surveys.</i> Port Coquitlam, BC.</li>
               </ol>
-              
-              <div class="section-title" style="margin-top: 10px;">Software Used:</div>
-              <ul style="margin: 5px 0; padding-left: 20px; font-size: 0.85em;">
-                <li>RIEGL RiPROCESS & RiWORLD v1.8.5</li>
-                <li>TerraSolid Suite (TerraScan, TerraModeler) v22</li>
-                <li>Applanix POSPac MMS v8.7</li>
-                <li>Global Mapper v25</li>
-                <li>ESRI ArcGIS Pro 3.2</li>
-                <li>FME Desktop 2023</li>
-              </ul>
             </div>
             
-            <!-- Right side: Acknowledgments and Contact -->
+            <!-- Right side: Acknowledgments only -->
             <div style="flex: 1; max-width: 48%;">
               <div class="section-title">Acknowledgments:</div>
               <p style="font-size: 0.85em; margin: 5px 0;">
-                Special thanks to the team at Eagle Mapping Ltd. for providing this practicum opportunity and sharing their expertise in aerial LiDAR mapping. In particular, I would like to thank:
+                Special thanks to the team at Eagle Mapping Services Ltd. for providing this practicum opportunity, sharing their expertise and making me feel part of the team. In particular, I would like to thank:
               </p>
               <ul style="margin: 5px 0; padding-left: 20px; font-size: 0.85em;">
-                <li>Jane Smith - LiDAR Operations Manager</li>
-                <li>John Doe - Senior Technician</li>
-                <li>Robert Johnson - Flight Operations</li>
+                <li>Matt Aquin - Eagle Mapping Practicum Sponsor</li>
+                <li>John Milne - LiDAR Operator</li>
+                <li>Bryan Attrell - Field Operations</li>
+                <li>James Hume - Company President</li>
                 <li>The BCIT GIS Advanced Diploma Program faculty</li>
+                <li>Windows 98 CSS library: <i>https://jdan.github.io/98.css/</i></li>
               </ul>
               
               <div class="win98-image-container" style="margin-top: 10px; padding: 8px;">
                 <div style="display: flex; justify-content: center; align-items: center;">
                   <div style="margin-right: 15px;">
-                    <img src="bcit_logo.jpg" onerror="this.onerror=null; this.src='/api/placeholder/80/80';" alt="BCIT Logo" style="width: 80px; height: auto;">
+                    <img src="BCIT_logo.png" onerror="this.onerror=null; this.src='/api/placeholder/80/80';" alt="BCIT Logo" style="width: 80px; height: auto;">
                   </div>
                   <div>
-                    <img src="eagle_logo.jpg" onerror="this.onerror=null; this.src='/api/placeholder/100/60';" alt="Eagle Mapping Logo" style="width: 100px; height: auto;">
+                    <img src="logotext.jpg" onerror="this.onerror=null; this.src='/api/placeholder/100/60';" alt="Eagle Mapping Logo" style="width: 100px; height: auto;">
                   </div>
                 </div>
               </div>
-              
-              <div style="margin-top: 10px;">
-                <div class="section-title">Contact Information:</div>
-                <p style="font-size: 0.85em; margin: 5px 0;">
-                  Andrew Dollak<br>
-                  GIS Advanced Diploma, BCIT<br>
-                  Email: andrew.dollak@example.com<br>
-                  LinkedIn: linkedin.com/in/andrewdollak
-                </p>
+            </div>
+          </div>
+          
+          <!-- Bottom full-width contact section -->
+          <div style="width: 100%; border-top: 1px solid #c0c0c0; padding-top: 12px;">
+            <div class="win98-image-container" style="padding: 8px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="flex: 1; text-align: center;">
+                  <div class="section-title" style="margin-bottom: 5px;">Contact Information:</div>
+                  <p style="font-size: 0.85em; margin: 5px 0;">
+                    Andrew Dollak | GIS Advanced Diploma, BCIT<br>
+                    Email: andrewdollak47@gmail.com | LinkedIn: linkedin.com/in/andrew-dollak-0454921b8
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -1123,19 +1038,19 @@
   <div class="desktop-icons">
     <div class="desktop-icon">
       <img src="https://win98icons.alexmeub.com/icons/png/cd_drive-5.png" alt="LiDAR Icon">
-      <span>LiDAR Data</span>
+      <span>LiDAR</span>
     </div>
     <div class="desktop-icon">
-      <img src="https://win98icons.alexmeub.com/icons/png/camera-0.png" alt="Flight Icon">
-      <span>Flight Planning</span>
+      <img src="https://win98icons.alexmeub.com/icons/png/camera-0.png" alt="Imagery Icon">
+      <span>Imagery</span>
     </div>
     <div class="desktop-icon">
-      <img src="https://win98icons.alexmeub.com/icons/png/scanner2-0.png" alt="Scanner Icon">
-      <span>Point Cloud</span>
+      <img src="https://win98icons.alexmeub.com/icons/png/help_book_big-0.png" alt="BCIT Icon">
+      <span>BCIT</span>
     </div>
     <div class="desktop-icon">
-      <img src="https://win98icons.alexmeub.com/icons/png/application_hourglass_small-2.png" alt="Results Icon">
-      <span>Results</span>
+      <img src="https://win98icons.alexmeub.com/icons/png/world-0.png" alt="Eagle Mapping Icon">
+      <span>Eagle Mapping</span>
     </div>
   </div>
   
