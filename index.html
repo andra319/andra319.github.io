@@ -6,9 +6,12 @@
   <link rel="stylesheet" href="https://unpkg.com/98.css" />
   <style>
     /* Override font sizes for better readability on a printed poster */
+    body, .window, .window-body, button, input, select, textarea {
+      font-family: 'Arial', 'Helvetica', sans-serif !important;
+    }
     /* Base font size for all elements */
     .window-body * {
-      font-size: 16px !important;
+      font-size: 16px;
     }
 
     /* Section titles */
@@ -18,7 +21,15 @@
 
     /* Main title */
     h1 {
-      font-size: 48px !important;
+      font-size: 72px !important;
+    }
+    .title-window .window-body h1 {
+      font-size: 72px !important;
+      font-size: unset;
+      font-size: 72px !important;
+    }
+    #main-title {
+      font-size: 72px !important;
     }
 
     /* Override specifically for elements that should remain relatively smaller */
@@ -426,9 +437,9 @@
           </div>
           <!-- Centered title -->
           <div style="text-align: center; padding: 0 110px;">
-            <h1 style="font-size: 36px; margin: 0;">Andrew's Industry Practicum at Eagle Mapping</h1>
+            <h1 id="main-title" style="font-size: 48px !important; margin: 0;">Andrew's Industry Practicum at Eagle Mapping</h1>
             <p style="margin: 10px 0 0 0;">
-              <span style="color: purple; font-weight: bold;">✨ Aerial Imagery Acquisition & Processing ✨</span>
+              <span style="color: purple; font-weight: bold; font-size: 36px;">✨ Aerial Imagery Acquisition & Processing ✨</span>
             </p>
           </div>
         </div>
@@ -760,9 +771,9 @@
                 <div style="display: flex; flex-direction: column; gap: 4px;">
                   <!-- Trajectory image -->
                   <div>
-                    <img src="Udey's flight.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/120';" alt="Flight Trajectory" style="width: 100%; height: auto; max-height: 120px; object-fit: contain; display: block;">
+                    <img src="Screenshot 2025-05-14 120545.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/120';" alt="Flight Trajectory" style="width: 100%; height: auto; max-height: 120px; object-fit: contain; display: block;">
                     <div style="text-align: center; margin-top: 2px; font-size: 0.8em; border-bottom: 1px dashed #c0c0c0; padding-bottom: 4px;">
-                      Flight trajectory over Vancouver
+                      Flight trajectory over Vancouver Harbour
                     </div>
                   </div>
                   
@@ -880,7 +891,7 @@
           <div style="margin-top: 10px;">
             <div class="section-title">Classification Process:</div>
             <p style="font-size: 0.9em; margin: 3px 0;">
-              Point cloud classification follows a semi-automated approach using TerraSolid software. First, algorithmic methods identify ground points using a progressive densification method. Next, vegetation points are classified based on height above ground and return characteristics. Buildings are identified using planar surface detection. Manual review and refinement ensures classification accuracy exceeds 98% when compared to control samples.
+              Point cloud classification follows a semi-automated approach using TerraScan software. First, algorithmic methods identify ground points with multiple quality checks. These points are divided into tiles for efficient computing. Next, water is classed out and cloud points removed. The ground data is shifted to match control points. Various deliverables are created from the classified points, most commonly: DEMs, DSMs, Intesity Rasters (as a subsitute for ortho imagery), and finally contours.
             </p>
           </div>
         </div>
@@ -957,7 +968,7 @@
           <div style="margin-top: 10px; font-size: 0.9em; border: 1px solid #808080; padding: 6px; background-color: #f0f0f0;">
             <div style="font-weight: bold;">LiDAR Product Uses:</div>
             <p style="margin: 3px 0; font-size: 0.85em;">
-              Eagle Mapping delivers high-precision LiDAR products for various applications including flood modeling, forestry inventory, corridor mapping, and urban planning. Products are delivered in industry-standard formats (LAS/LAZ, GeoTIFF, DWG) with documentation.
+              Eagle Mapping delivers high-precision LiDAR products for various applications including forresty, mining, corridor mapping, and urban planning. Products are delivered in industry-standard formats (LAS/LAZ, GeoTIFF, DWG) with documentation.
             </p>
           </div>
         </div>
@@ -996,9 +1007,9 @@
               <ul style="margin: 5px 0; padding-left: 20px; font-size: 0.85em;">
                 <li>Matt Aquin - Eagle Mapping Practicum Sponsor</li>
                 <li>John Milne - LiDAR Operator</li>
-                <li>Bryan Attrell - Field Operations</li>
-                <li>James Hume - Company President</li>
-                <li>The BCIT GIS Advanced Diploma Program faculty</li>
+                <li>Bryan Attrell - Field Operations Manager</li>
+                <li>James Hume - Eagle Mapping President</li>
+                <li>The BCIT GIS Department faculty</li>
                 <li>Windows 98 CSS library: <i>https://jdan.github.io/98.css/</i></li>
               </ul>
               
