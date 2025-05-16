@@ -390,7 +390,7 @@
     }
     
     .flowchart-item {
-      background-color: #c0c0c0;
+      background-color: #ece9d8;
       border: 2px solid;
       border-color: #ffffff #808080 #808080 #ffffff;
       padding: 10px;
@@ -763,59 +763,43 @@
             </p>
           </div>
           
-          <div style="display: flex; gap: 10px; margin-top: 10px;">
-            <!-- Left side: Two images in one container -->
-            <div style="flex: 1; max-width: 48%;">
-              <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
-                <!-- Two images stacked vertically -->
-                <div style="display: flex; flex-direction: column; gap: 4px;">
+          <!-- Modified layout to make images bigger -->
+          <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;">
+            <!-- Images container - now full width -->
+            <div style="width: 100%;">
+              <div class="win98-image-container" style="padding: 2px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+                <!-- Two images side by side instead of stacked -->
+                <div style="display: flex; gap: 10px;">
                   <!-- Trajectory image -->
-                  <div>
-                    <img src="Screenshot 2025-05-14 120545.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/120';" alt="Flight Trajectory" style="width: 100%; height: auto; max-height: 120px; object-fit: contain; display: block;">
-                    <div style="text-align: center; margin-top: 2px; font-size: 0.8em; border-bottom: 1px dashed #c0c0c0; padding-bottom: 4px;">
+                  <div style="flex: 1;">
+                    <img src="Screenshot 2025-05-14 120545.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/200';" alt="Flight Trajectory" style="width: 100%; height: auto; max-height: 200px; object-fit: contain; display: block;">
+                    <div style="text-align: center; margin-top: 4px; font-size: 0.8em; padding-bottom: 4px;">
                       Flight trajectory over Vancouver Harbour
                     </div>
                   </div>
                   
                   <!-- Point cloud image -->
-                  <div>
-                    <img src="Textured intensity-small.png" onerror="this.onerror=null; this.src='/api/placeholder/350/120';" alt="Point Cloud" style="width: 100%; height: auto; max-height: 120px; object-fit: contain; display: block;">
-                    <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
-                      Resulting point cloud in RiProcess
+                  <div style="flex: 1;">
+                    <img src="BCPLACE.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/200';" alt="Point Cloud" style="width: 100%; height: auto; max-height: 200px; object-fit: contain; display: block;">
+                    <div style="text-align: center; margin-top: 4px; font-size: 0.8em;">
+                      BC Place Point Cloud
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             
-            <!-- Right side: Processing Steps -->
-            <div style="flex: 1; max-width: 48%;">
-              <div class="section-title">Processing Workflow:</div>
+            <!-- Processing Steps - now below the images -->
+            <div>
+              <div class="section-title">Raw LiDAR data processing:</div>
               <ol style="margin: 5px 0; padding-left: 20px; font-size: 0.9em;">
-                <li>Import GNSS/IMU data to POSPac</li>
-                <li>Process data to generate SBET solution</li>
                 <li>Import SBET and raw LiDAR data to RiProcess</li>
                 <li>Apply system calibration parameters</li>
                 <li>Georeference points to trajectory</li>
                 <li>Generate point cloud with coordinate transform</li>
+                <li>QA/QC checks before export</li>
               </ol>
-              
-              <div class="section-title" style="margin-top: 5px;">Quality Control:</div>
-              <ul style="margin: 5px 0; padding-left: 20px; font-size: 0.9em;">
-                <li>GNSS position accuracy: &lt;5cm</li>
-                <li>IMU attitude accuracy: &lt;0.005°</li>
-                <li>Point cloud vertical accuracy: ±15cm RMSE</li>
-                <li>Flight line overlap consistency: ±8cm</li>
-              </ul>
             </div>
-          </div>
-          
-          <!-- Bottom note -->
-          <div style="margin-top: 10px; font-size: 0.9em; border: 1px solid #808080; padding: 6px; background-color: #f0f0f0;">
-            <div style="font-weight: bold;">Point Cloud Generation:</div>
-            <p style="margin: 3px 0; font-size: 0.85em;">
-              After trajectory processing, the SBET file is combined with raw laser measurements in RiProcess to generate an accurately georeferenced point cloud. Each point is assigned precise XYZ coordinates based on the aircraft's position, scanner angle, and measured distance. The resulting point cloud is the foundation for all downstream LiDAR products.
-            </p>
           </div>
         </div>
       </div>
@@ -829,17 +813,16 @@
             <button aria-label="Close"></button>
           </div>
         </div>
-        <div class="window-body">
-          <div style="display: flex; gap: 10px;">
-            
+        <div class="window-body" style="padding: 8px;">
+          <div style="display: flex; gap: 15px;">
             
             <!-- Left side: Classification Methodology -->
-            <div style="flex: 1; max-width: 48%;">
+            <div style="flex: 1; max-width: 55%;">
               <div class="section-title">Classification Categories:</div>
-              <table class="interactive" style="margin-top: 5px; font-size: 0.9em;">
+              <table class="interactive" style="margin-top: 8px; font-size: 0.9em; width: 100%;">
                 <thead>
                   <tr>
-                    <th>Class</th>
+                    <th style="width: 20%;">Class</th>
                     <th>Description</th>
                   </tr>
                 </thead>
@@ -874,25 +857,31 @@
                   </tr>
                 </tbody>
               </table>
+              
+              <!-- Classification Process moved to left column -->
+              <div style="margin-top: 15px;">
+                <div class="section-title">Classification Process:</div>
+                <p style="font-size: 0.9em; margin: 6px 0;">
+                  Point cloud classification follows a semi-automated approach using TerraScan software. First, algorithmic methods identify ground points with multiple quality checks. These points are divided into tiles for efficient computing. Next, water is classed out and cloud points removed. The ground data is shifted to match control points. 
+                </p>
+                <p style="font-size: 0.9em; margin: 6px 0;">
+                  Various deliverables are created from the classified points, most commonly: DEMs, DSMs, Intensity Rasters (as a substitute for ortho imagery), and finally contours.
+                </p>
+              </div>
             </div>
-            <!-- Right side: Classification Software Screenshot - adjusted for portrait orientation -->
-            <div style="max-width: 35%; height: 400px;"> <!-- Reduced width from 48% to 35% -->
-              <div class="win98-image-container" style="height: 95%;"> <!-- Added height to container -->
-                <div class="image-container" style="height: 95%;"> <!-- Made image container taller -->
-                  <img src="Forestry-2018.jpg" onerror="this.onerror=null; this.src='/api/placeholder/180/350';" 
-                      alt="LiDAR Classification" 
-                      style="width: 100%; max-height: 500px; object-fit: contain; display: block;"> <!-- Increased max-height, adjusted fit -->
+            
+            <!-- Right side: Classification Software Screenshot - optimized for portrait image -->
+            <div style="flex: 1; max-width: 40%;">
+              <div class="win98-image-container" style="padding: 2px; background-color: white; height: 100%; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+                <img src="Forestry-2018.jpg" 
+                    onerror="this.onerror=null; this.src='/api/placeholder/220/440';" 
+                    alt="LiDAR Classification" 
+                    style="width: 100%; height: auto; max-height: 440px; object-fit: contain; display: block;">
+                <div style="text-align: center; margin-top: 4px; font-size: 0.8em;">
+                  Various classification methods
                 </div>
               </div>
             </div>
-          </div>
-          
-          <!-- Bottom section: Classification Process -->
-          <div style="margin-top: 10px;">
-            <div class="section-title">Classification Process:</div>
-            <p style="font-size: 0.9em; margin: 3px 0;">
-              Point cloud classification follows a semi-automated approach using TerraScan software. First, algorithmic methods identify ground points with multiple quality checks. These points are divided into tiles for efficient computing. Next, water is classed out and cloud points removed. The ground data is shifted to match control points. Various deliverables are created from the classified points, most commonly: DEMs, DSMs, Intesity Rasters (as a subsitute for ortho imagery), and finally contours.
-            </p>
           </div>
         </div>
       </div>
