@@ -11,50 +11,49 @@
     }
     /* Base font size for all elements */
     .window-body * {
-      font-size: 16px;
+      font-size: 18px; /* Increased from 16px for better readability */
     }
 
     /* Section titles */
     .section-title {
-      font-size: 30px !important;
+      font-size: 32px !important; /* Increased from 30px */
+      margin-bottom: 8px !important;
     }
 
     /* Main title */
     h1 {
-      font-size: 72px !important;
+      font-size: 56px !important; 
     }
     .title-window .window-body h1 {
-      font-size: 72px !important;
-      font-size: unset;
-      font-size: 72px !important;
+      font-size: 56px !important;
     }
     #main-title {
-      font-size: 72px !important;
+      font-size: 56px !important;
     }
 
     /* Override specifically for elements that should remain relatively smaller */
     .side-panel-content * {
-      font-size: 14px !important; /* Slightly smaller for side panels but still readable */
+      font-size: 16px !important; /* Increased from 14px */
     }
 
     /* Image captions */
     .win98-image-container div {
-      font-size: 16px !important;
+      font-size: 18px !important; /* Increased from 16px */
     }
 
     /* Table text */
     table.interactive th, 
     table.interactive td {
-      font-size: 18px !important;
+      font-size: 20px !important; /* Increased from 18px */
     }
 
     /* Flowchart items */
     .flowchart-item {
-      font-size: 22px !important;
+      font-size: 24px !important; /* Increased from 22px */
     }
 
     .flowchart-item div {
-      font-size: 20px !important;
+      font-size: 22px !important; /* Increased from 20px */
     }
 
     /* Set up the poster dimensions and background */
@@ -71,7 +70,7 @@
     /* First, increase the overall container width */
     .print-container {
       width: 100%; /* Change from 17in to 95% of viewport width */
-      max-width: 1800px; /* Increase from 1224px to a much larger value */
+      max-width: 2000px; /* Increased from 1800px */
       height: auto; 
       min-height: 22in;
       padding-bottom: 40px;
@@ -84,8 +83,8 @@
       display: grid;
       grid-template-columns: 1fr 2fr 2fr; /* Makes the side panel relatively smaller */
       grid-template-rows: auto auto auto auto auto auto auto;
-      gap: 12px;
-      padding: 12px;
+      gap: 16px; /* Increased from 12px */
+      padding: 16px; /* Increased from 12px */
       height: auto;
       box-sizing: border-box;
     }
@@ -97,13 +96,13 @@
     }
 
     .abstract-window {
-      grid-column: 2 / 4;
+      grid-column: 2 / 3;
       grid-row: 2;
       height: fit-content; /* Change from min-height: auto to make it fit the content */
     }
     /* Reduce spacing in abstract window */
     .abstract-window .window-body {
-      padding: 8px; /* Reduce from default 16px */
+      padding: 12px; /* Increased from 8px */
     }
 
     .abstract-window .window-body p {
@@ -162,7 +161,7 @@
     .side-panel-content {
       max-height: 100%;
       overflow-y: auto;
-      padding-right: 5px;
+      padding-right: 8px; /* Increased from 5px */
     }
 
     /* Windows 98 scrollbar styles */
@@ -249,7 +248,7 @@
     
     .image-container img {
       max-width: 100%;
-      max-height: 200px;
+      max-height: 300px; /* Increased from 200px */
       border: 1px solid #c0c0c0;
       object-fit: contain;
     }
@@ -268,7 +267,7 @@
     .section-title {
       font-weight: bold;
       margin-top: 10px;
-      margin-bottom: 5px;
+      margin-bottom: 8px; /* Increased from 5px */
     }
     
     .content-section {
@@ -281,7 +280,7 @@
     
     @media print {
     .poster {
-      transform: scale(0.9); /* Slightly reduce the scale for printing */
+      transform: scale(0.95); /* Increased from 0.9 */
       transform-origin: top center;
     }
     
@@ -338,12 +337,12 @@
       background-color: #c0c0c0;
       text-align: left;
       font-weight: bold;
-      padding: 2px 6px;
+      padding: 4px 8px; /* Increased from 2px 6px */
       border-bottom: 1px solid #808080;
     }
 
     table.interactive td {
-      padding: 2px 6px;
+      padding: 4px 8px; /* Increased from 2px 6px */
       border-bottom: 1px solid #dfdfdf;
     }
 
@@ -393,11 +392,11 @@
       background-color: #ece9d8;
       border: 2px solid;
       border-color: #ffffff #808080 #808080 #ffffff;
-      padding: 10px;
+      padding: 12px; /* Increased from 10px */
       margin: 0 5px;
       text-align: center;
       flex: 1;
-      max-width: 150px;
+      max-width: 160px; /* Increased from 150px */
       position: relative;
     }
     
@@ -405,7 +404,7 @@
       flex: 0 0 30px;
       text-align: center;
       font-weight: bold;
-      font-size: 20px;
+      font-size: 24px; /* Increased from 20px */
     }
   </style>
 </head>
@@ -423,23 +422,23 @@
             <button aria-label="Close"></button>
           </div>
         </div>
-        <div class="window-body" style="position: relative; padding: 10px 0;">
+        <div class="window-body" style="position: relative; padding: 15px 0;">
           <!-- First logo on the left -->
-          <div style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%);">
-            <img src="email signature logo.png" onerror="this.onerror=null; this.src='/api/placeholder/80/80';" alt="Eagle Mapping Logo" style="width: 80px; height: 80px; object-fit: contain;">
+          <div style="position: absolute; left: 30px; top: 50%; transform: translateY(-50%);">
+            <img src="email signature logo.png" onerror="this.onerror=null; this.src='/api/placeholder/100/100';" alt="Eagle Mapping Logo" style="width: 100px; height: 100px; object-fit: contain;">
           </div>
           
           <!-- Second logo on the right -->
-          <div style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%);">
-            <img src="eagle.jpg" onerror="this.onerror=null; this.src='/api/placeholder/80/80';" 
+          <div style="position: absolute; right: 30px; top: 50%; transform: translateY(-50%);">
+            <img src="eagle.jpg" onerror="this.onerror=null; this.src='/api/placeholder/100/100';" 
                  alt="Eagle Logo" 
-                 style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; border: 2px solid #c0c0c0;">
+                 style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 2px solid #c0c0c0;">
           </div>
           <!-- Centered title -->
-          <div style="text-align: center; padding: 0 110px;">
-            <h1 id="main-title" style="font-size: 48px !important; margin: 0;">Andrew's Industry Practicum at Eagle Mapping</h1>
-            <p style="margin: 10px 0 0 0;">
-              <span style="color: purple; font-weight: bold; font-size: 36px;">✨ Aerial Imagery Acquisition & Processing ✨</span>
+          <div style="text-align: center; padding: 0 130px;">
+            <h1 id="main-title" style="font-size: 60px !important; margin: 0;">Andrew's Industry Practicum at Eagle Mapping</h1>
+            <p style="margin: 15px 0 0 0;">
+              <span style="color: #000080; font-weight: bold; font-size: 40px;">✨ Aerial Imagery Acquisition & Processing ✨</span>
             </p>
           </div>
         </div>
@@ -458,26 +457,26 @@
         <div class="window-body">
           <div class="side-panel-content">
             <div class="section-title">How LiDAR Works:</div>
-            <p style="font-size: 0.85em; margin: 3px 0;">
-              LiDAR (Light Detection and Ranging) is a remote sensing method that uses light in the form of pulsed lasers to measure distances to the Earth's surface.
+            <p style="font-size: 0.9em; margin: 3px 0;">
+              LiDAR uses pulsed lasers to measure distances to Earth's surface, creating detailed 3D representations.
             </p>
             
-            <div class="win98-image-container" style="margin: 8px 0;">
+            <div class="win98-image-container" style="margin: 10px 0;">
               <div class="image-container">
-                <img src="Plane-Scan (2).jpg" onerror="this.onerror=null; this.src='/api/placeholder/180/120';" alt="LiDAR Theory" style="max-height: 200px;">
+                <img src="Plane-Scan (2).jpg" onerror="this.onerror=null; this.src='/api/placeholder/280/200';" alt="LiDAR Theory" style="max-height: 240px;">
               </div>
             </div>
             
             <div class="section-title">Key Components:</div>
-            <ul style="font-size: 0.85em; margin: 3px 0; padding-left: 20px;">
-              <li><b>Laser:</b> Emits pulses of light</li>
+            <ul style="font-size: 0.9em; margin: 5px 0; padding-left: 20px;">
+              <li><b>Laser:</b> Emits light pulses</li>
               <li><b>Scanner:</b> Directs laser pulses</li>
               <li><b>Photodetector:</b> Measures returned signals</li>
-              <li><b>GPS/IMU:</b> Tracks position and orientation</li>
+              <li><b>GPS/IMU:</b> Tracks position/orientation</li>
             </ul>
             
             <div class="section-title">Pulse Types:</div>
-            <table class="interactive" style="margin-top: 5px; font-size: 0.8em;">
+            <table class="interactive" style="margin-top: 5px; font-size: 0.9em;">
               <thead>
                 <tr>
                   <th>Type</th>
@@ -496,24 +495,18 @@
               </tbody>
             </table>
             
-            <div class="section-title" style="margin-top: 10px;">Return Types:</div>
-            <p style="font-size: 0.85em; margin: 3px 0;">
-              A single laser pulse can have multiple returns:
-            </p>
-            <ul style="font-size: 0.85em; margin: 3px 0; padding-left: 20px;">
-              <li><b>First Return:</b> Typically tree canopy</li>
-              <li><b>Intermediate Returns:</b> Vegetation layers</li>
-              <li><b>Last Return:</b> Often ground surface</li>
+            <div class="section-title" style="margin-top: 12px;">Return Types:</div>
+            <ul style="font-size: 0.9em; margin: 5px 0; padding-left: 20px;">
+              <li><b>First:</b> Typically tree canopy</li>
+              <li><b>Intermediate:</b> Vegetation layers</li>
+              <li><b>Last:</b> Often ground surface</li>
             </ul>
             
-            <div class="section-title" style="margin-top: 10px;">Point Cloud Generation:</div>
-            <p style="font-size: 0.85em; margin: 3px 0;">
-              LiDAR creates detailed 3D representations through:
-            </p>
-            <ul style="font-size: 0.85em; margin: 3px 0; padding-left: 20px;">
-              <li><b>Time of Flight:</b> Measures time between pulse emission and return</li>
-              <li><b>Coordinate Assignment:</b> Combines with GPS/IMU data for XYZ position</li>
-              <li><b>Point Cloud Formation:</b> Millions of points create 3D representation</li>
+            <div class="section-title" style="margin-top: 12px;">Point Cloud Generation:</div>
+            <ul style="font-size: 0.9em; margin: 5px 0; padding-left: 20px;">
+              <li><b>Time of Flight:</b> Measures pulse travel time</li>
+              <li><b>Coordinate Assignment:</b> Combines with GPS/IMU data</li>
+              <li><b>Point Cloud:</b> Millions of 3D points</li>
             </ul>
           </div>
         </div>
@@ -531,73 +524,57 @@
         </div>
         <div class="window-body">
           <div class="side-panel-content">
-            <div style="background-color: #c0c0c0; padding: 5px; border: 1px solid #808080; margin-bottom: 10px; font-size: 0.85em;">
-              <b>LiDAR Terminology Glossary</b> - Common terms used in LiDAR mapping
+            <div style="background-color: #c0c0c0; padding: 8px; border: 1px solid #808080; margin-bottom: 12px; font-size: 0.9em;">
+              <b>LiDAR Terminology Glossary</b> - Common mapping terms
             </div>
             
             <div style="height: calc(100% - 30px); overflow-y: auto;">
-              <dl style="font-size: 0.85em; margin: 0; padding: 0;">
+              <dl style="font-size: 0.9em; margin: 0; padding: 0;">
                 <dt style="font-weight: bold; color: #000080;">AGL</dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">Above Ground Level - Height measurement from ground surface rather than sea level.</dd>
+                <dd style="margin-left: 15px; margin-bottom: 10px;">Above Ground Level - Height from ground surface</dd>
                 
                 <dt style="font-weight: bold; color: #000080;">PPM</dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">Points Per Meter - the number of points for each imaged meter, AKA resolution.</dd>
+                <dd style="margin-left: 15px; margin-bottom: 10px;">Points Per Meter - Resolution measurement</dd>
                 
                 <dt style="font-weight: bold; color: #000080;">DSM</dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">Digital Surface Model - Represents the earth's surface including all objects (buildings, vegetation).</dd>
+                <dd style="margin-left: 15px; margin-bottom: 10px;">Digital Surface Model - Earth with all objects</dd>
                 
                 <dt style="font-weight: bold; color: #000080;">DTM</dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">Digital Terrain Model - Representation of bare ground surface without objects.</dd>
+                <dd style="margin-left: 15px; margin-bottom: 10px;">Digital Terrain Model - Bare ground surface</dd>
                 
                 <dt style="font-weight: bold; color: #000080;">PRR</dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">The diameter of the beam at the target's range.</dd>
+                <dd style="margin-left: 15px; margin-bottom: 10px;">Pulse Repetition Rate - Laser pulses per second</dd>
                 
                 <dt style="font-weight: bold; color: #000080;">Laser Footprint</dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">Ground Sampling Distance - Distance between pixel centers on the ground.</dd>
+                <dd style="margin-left: 15px; margin-bottom: 10px;">Beam diameter at target's range</dd>
                 
                 <dt style="font-weight: bold; color: #000080;">IMU</dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">Inertial Measurement Unit - Device that measures aircraft orientation and movement.</dd>
+                <dd style="margin-left: 15px; margin-bottom: 10px;">Inertial Measurement Unit - Tracks orientation</dd>
                 
                 <dt style="font-weight: bold; color: #000080;">LAS/LAZ</dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">Industry-standard file formats for LiDAR point clouds (LAZ is compressed).</dd>
+                <dd style="margin-left: 15px; margin-bottom: 10px;">Standard point cloud formats (LAZ is compressed)</dd>
                 
                 <dt style="font-weight: bold; color: #000080;">Point Cloud</dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">Collection of data points in 3D space, each with X, Y, Z coordinates.</dd>
+                <dd style="margin-left: 15px; margin-bottom: 10px;">3D data points with X, Y, Z coordinates</dd>
 
                 <dt style="font-weight: bold; color: #000080;">Max Range</dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">The maximum achievable distance at which a scanner can perform range measurements.</dd>
+                <dd style="margin-left: 15px; margin-bottom: 10px;">Maximum distance for measurement</dd>
 
-                <dt style="font-weight: bold; color: #000080;">GNSS<dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">Global Navigation Satellite System - Satellite navigation system with global coverage.</dd>
+                <dt style="font-weight: bold; color: #000080;">GNSS</dt>
+                <dd style="margin-left: 15px; margin-bottom: 10px;">Global Navigation Satellite System</dd>
 
                 <dt style="font-weight: bold; color: #000080;">Swath</dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">The lateral spread of LiDAR pulses over terrain. Swath width increases at higher AGLs.</dd>
+                <dd style="margin-left: 15px; margin-bottom: 10px;">Lateral spread of LiDAR pulses</dd>
 
                 <dt style="font-weight: bold; color: #000080;">Overlap</dt>
-                <dd style="margin-left: 15px; margin-bottom: 8px;">The point at which parallel swaths overlap, resulting in additional coverage.</dd>
+                <dd style="margin-left: 15px; margin-bottom: 10px;">Where parallel swaths intersect</dd>
               </dl>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Abstract Window -->
-      <div class="abstract-window window">
-        <div class="title-bar">
-          <div class="title-bar-text">Abstract</div>
-          <div class="title-bar-controls">
-            <button aria-label="Minimize" disabled></button>
-            <button aria-label="Maximize"></button>
-            <button aria-label="Close"></button>
-          </div>
-        </div>
-        <div class="window-body">
-          <p>
-            My practicum with Eagle Mapping focused on aerial imagery acquisition and processing workflows for high-precision topographic mapping. The practicum involved flight planning, aerial data collection, data processing, and point cloud classification. Working with industry-standard equipment and software, I participated in the complete LiDAR workflow from acquisition to final product delivery, addressing challenges in data management, quality control, and integration with existing GIS systems while adhering to industry specifications for spatial accuracy.
-          </p>
-        </div>
-      </div>
-      <!-- Workflow Overview Window -->
+      <!-- Combined Abstract & Workflow Window -->
       <div class="workflow-overview-window window">
         <div class="title-bar">
           <div class="title-bar-text">LiDAR Workflow Overview</div>
@@ -607,41 +584,58 @@
             <button aria-label="Close"></button>
           </div>
         </div>
-        <div class="window-body">
-          <!-- Text description now comes first -->
-          <div style="font-size: 0.9em; border: 1px solid #808080; padding: 10px; background-color: #f0f0f0;">
-            <div style="font-weight: bold; color: purple;">✨ Key Components ✨</div>
-            <p style="margin: 6px 0;">
-              The product workflow at Eagle Mapping involves a series of integrated steps resulting in high-precision topographic data. Flight planning ensures optimal coverage and point density, while acquisition captures millions of data points per second using aerial LiDAR sensors. Processing involves trajectory correction and data alignment, followed by classification to identify different surface types. Final products include digital terrain models (DTMs), digital surface models (DSMs), and high resolution imagery used in various GIS applications.
-            </p>
+        <div class="window-body" style="padding: 12px;">
+          <!-- Introduction and merged list -->
+          <div style="display: flex; margin-bottom: 15px;">
+            <!-- Left column - Abstract -->
+            <div style="flex: 1; padding-right: 15px;">
+              <p style="margin-bottom: 10px; font-weight: bold; font-size: 20px;">
+                My Eagle Mapping practicum focused on aerial LiDAR acquisition and processing for high-precision topographic mapping.
+              </p>
+              <ul style="margin-top: 0; padding-left: 20px;">
+                <li>Integration with existing GIS systems</li>
+                <li>Quality control & industry specifications</li>
+                <li>Creating deliverables for client needs</li>
+              </ul>
+            </div>
+            <!-- Right column - Company Info -->
+            <div style="flex: 1; background-color: #f0f0f0; border: 1px solid #808080; padding: 10px;">
+              <div style="font-weight: bold; color: purple; font-size: 22px; text-align: center;">Eagle Mapping Ltd.</div>
+              <ul style="margin: 8px 0; padding-left: 20px;">
+                <li><b>Established:</b> Industry leader since 1985</li>
+                <li><b>Expertise:</b> Aerial mapping, LiDAR & orthoimagery</li>
+                <li><b>Operations:</b> Projects across North America</li>
+                <li><b>Technology:</b> State-of-the-art sensors & aircraft</li>
+                <li><b>Clients:</b> Forestry, mining, utilities & government</li>
+              </ul>
+            </div>
           </div>
-          
-          <!-- Flowchart comes second with a margin at the top -->
-          <div class="flowchart" style="margin-top: 15px;">
+          <!-- Flowchart preserved exactly as is -->
+          <div class="flowchart">
             <div class="flowchart-item">
               <div style="font-weight: bold;">Flight Planning</div>
-              <div style="font-size: 0.8em; margin-top: 5px;">Determine project parameters & flight lines</div>
+              <div style="font-size: 0.8em; margin-top: 5px;">Project parameters & flight lines</div>
             </div>
             
             <div class="flowchart-arrow">→</div>
             
             <div class="flowchart-item">
-              <div style="font-weight: bold;"> Data Acquisition</div>
-              <div style="font-size: 0.8em; margin-top: 5px;">Collect LiDAR and image data</div>
+              <div style="font-weight: bold;">Data Acquisition</div>
+              <div style="font-size: 0.8em; margin-top: 5px;">LiDAR & image collection</div>
             </div>
             
             <div class="flowchart-arrow">→</div>
             
             <div class="flowchart-item">
               <div style="font-weight: bold;">Data Processing</div>
-              <div style="font-size: 0.8em; margin-top: 5px;">Align & georeference data</div>
+              <div style="font-size: 0.8em; margin-top: 5px;">Georeference data</div>
             </div>
             
             <div class="flowchart-arrow">→</div>
             
             <div class="flowchart-item">
               <div style="font-weight: bold;">Classification</div>
-              <div style="font-size: 0.8em; margin-top: 5px;">Categorize based on client requirements</div>
+              <div style="font-size: 0.8em; margin-top: 5px;">Categorize points</div>
             </div>
             
             <div class="flowchart-arrow">→</div>
@@ -664,23 +658,23 @@
             <button aria-label="Close"></button>
           </div>
         </div>
-        <div class="window-body" style="padding: 4px;">
+        <div class="window-body" style="padding: 8px;">
           <!-- Image container with Windows 98 styling but minimal padding -->
-          <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+          <div class="win98-image-container" style="padding: 2px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
             <div class="image-container" style="margin: 0;">
-              <img src="qcflightmerge.jpg" onerror="this.onerror=null; this.src='/api/placeholder/180/120';" alt="LiDAR Flight Plan" style="width: 100%; height: auto; max-height: 350px; object-fit: contain; display: block;">
+              <img src="qcflightmerge.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/250';" alt="LiDAR Flight Plan" style="width: 100%; height: auto; max-height: 370px; object-fit: contain; display: block;">
             </div>
-            <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
-              Drawing flight lines over Digital Elevation Models in SnapPlan
+            <div style="text-align: center; margin-top: 4px; font-size: 0.9em;">
+              Flight lines over Digital Elevation Models in SnapPlan
             </div>
           </div>
           
-          <div style="margin-top: 8px; font-size: 0.9em; border: 1px solid #808080; padding: 6px; background-color: #f0f0f0;">
-            <div style="font-weight: bold;">Creating a flight plan:</div>
-            <ul style="margin: 3px 0; padding-left: 20px; font-size: 0.85em;">
-              <li>Lines are drawn according to required overlap</li>
-              <li>The plan is created over a DEM for terrain variations</li>
-              <li>Some areas require special plans. Push plans, for example, ensure that when the required point density is not being met, like when flying over valleys in mountaineous regions, triple coverage is achieved</li>
+          <div style="margin-top: 10px; font-size: 0.95em; border: 1px solid #808080; padding: 8px; background-color: #f0f0f0;">
+            <div style="font-weight: bold; font-size: 22px;">Creating a flight plan:</div>
+            <ul style="margin: 5px 0; padding-left: 20px; font-size: 0.9em;">
+              <li>Lines drawn according to required overlap</li>
+              <li>Plan created over DEM for terrain variations</li>
+              <li>Push plans ensure triple coverage in valleys and challenging terrain</li>
             </ul>
           </div>
         </div>
@@ -695,26 +689,24 @@
             <button aria-label="Close"></button>
           </div>
         </div>
-        <div class="window-body" style="padding: 4px;">
-          <div style="display: flex; gap: 10px; align-items: flex-start;">
+        <div class="window-body" style="padding: 8px;">
+          <div style="display: flex; gap: 12px; align-items: flex-start;">
             <!-- Left side: Equipment Details -->
             <div style="flex: 3; max-width: 60%;">
               <div class="section-title">Acquisition Equipment:</div>
-              <ul style="margin: 5px 0; padding-left: 20px; font-size: 0.9em;">
-                <li>Aircraft: Eagle Mapping owns and leases several aircraft throughout North America</li>
-                <li>Planes typically fly between 120-150kts</li>
-                <li>These planes are equipped with various RIEGL LiDAR scanners, such as the VQ-1560II-S pictured</li>
-                <li>Medium format cameras, such as the 150 megapixel PhaseOne iXM-RS150F, are used for ultra-high resolution imagery</li>
+              <ul style="margin: 5px 0; padding-left: 20px; font-size: 0.95em;">
+                <li>Aircraft flying at 120-150kts across North America</li>
+                <li>RIEGL LiDAR scanners (VQ-1560II-S pictured)</li>
+                <li>PhaseOne iXM-RS150F 150MP cameras for ultra-high resolution imagery</li>
               </ul>
               
-              <div style="margin-top: 8px; font-size: 0.9em; border: 1px solid #808080; padding: 6px; background-color: #f0f0f0;">
-                <div style="font-weight: bold;">LiDAR Operators:</div>
-                <ul style="margin: 3px 0; padding-left: 20px; font-size: 0.85em;">
-                  <li>Acquisition could not be achieved without the hard work of a LiDAR Operator</li>
-                  <li>Their job is to ensure that data is being recorded properly and that specs are being met</li>
-                  <li>If the equipment fails or the plane was flying too fast, low, or high, it's the operator's job to communicate with the pilot that a line needs to be reflown</li>
-                  <li>Operators may fly several hours a day, for several days on end, far away from home</li>
-                  <li>Eagle Mapping conducts operations across North America inculding Canada, the US, Mexico, Columbia, Guatemala and more</li>
+              <div style="margin-top: 10px; font-size: 0.95em; border: 1px solid #808080; padding: 8px; background-color: #f0f0f0;">
+                <div style="font-weight: bold; font-size: 22px;">LiDAR Operators:</div>
+                <ul style="margin: 5px 0; padding-left: 20px; font-size: 0.9em;">
+                  <li>Monitor data recording and spec compliance</li>
+                  <li>Communicate with pilots about reflights when needed</li>
+                  <li>May fly for several hours daily across multiple countries</li>
+                  <li>Operations span Canada, US, Mexico, Colombia, Guatemala and more</li>
                 </ul>
               </div>
             </div>
@@ -722,21 +714,21 @@
             <!-- Right side: Stacked Images -->
             <div style="flex: 2; max-width: 38%;">
               <!-- Navajo Aircraft Image -->
-              <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0 0 8px 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+              <div class="win98-image-container" style="padding: 2px; background-color: white; width: 100%; margin: 0 0 10px 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
                 <div class="image-container" style="margin: 0;">
-                  <img src="Navajo.jpg" onerror="this.onerror=null; this.src='/api/placeholder/180/180';" alt="Piper Navajo Aircraft" style="width: 100%; height: auto; max-height: 170px; object-fit: contain; display: block;">
+                  <img src="Navajo.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/200';" alt="Piper Navajo Aircraft" style="width: 100%; height: auto; max-height: 190px; object-fit: contain; display: block;">
                 </div>
-                <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
+                <div style="text-align: center; margin-top: 4px; font-size: 0.9em;">
                   Piper Navajo
                 </div>
               </div>
               
               <!-- 1560 LiDAR Scanner Image -->
-              <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+              <div class="win98-image-container" style="padding: 2px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
                 <div class="image-container" style="margin: 0;">
-                  <img src="1560.jpg" onerror="this.onerror=null; this.src='/api/placeholder/180/180';" alt="RIEGL LMS-Q1560 Scanner" style="width: 100%; height: auto; max-height: 170px; object-fit: contain; display: block;">
+                  <img src="1560.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/200';" alt="RIEGL LMS-Q1560 Scanner" style="width: 100%; height: auto; max-height: 190px; object-fit: contain; display: block;">
                 </div>
-                <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
+                <div style="text-align: center; margin-top: 4px; font-size: 0.9em;">
                   VQ-1560II-S
                 </div>
               </div>
@@ -744,6 +736,7 @@
           </div>
         </div>
       </div>
+      
       <!-- LiDAR Processing Window -->
       <div class="lidar-processing-window window">
         <div class="title-bar">
@@ -754,12 +747,12 @@
             <button aria-label="Close"></button>
           </div>
         </div>
-        <div class="window-body" style="padding: 8px;">
+        <div class="window-body" style="padding: 10px;">
           <!-- Top section: Trajectory Processing -->
           <div>
             <div class="section-title">Trajectory Processing:</div>
-            <p style="font-size: 0.9em; margin: 3px 0;">
-              A critical first step in LiDAR processing involves accurately determining the aircraft's position and orientation throughout the flight. This is achieved by processing GNSS and IMU data using Applanix POSPac MMS software, generating a Smoothed Best Estimate of Trajectory (SBET) file.
+            <p style="font-size: 0.95em; margin: 5px 0;">
+              Processing GNSS and IMU data with Applanix POSPac MMS software to generate a Smoothed Best Estimate of Trajectory (SBET) file, determining aircraft position and orientation.
             </p>
           </div>
           
@@ -767,21 +760,21 @@
           <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;">
             <!-- Images container - now full width -->
             <div style="width: 100%;">
-              <div class="win98-image-container" style="padding: 2px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+              <div class="win98-image-container" style="padding: 3px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
                 <!-- Two images side by side instead of stacked -->
-                <div style="display: flex; gap: 10px;">
+                <div style="display: flex; gap: 12px;">
                   <!-- Trajectory image -->
                   <div style="flex: 1;">
-                    <img src="Screenshot 2025-05-14 120545.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/200';" alt="Flight Trajectory" style="width: 100%; height: auto; max-height: 200px; object-fit: contain; display: block;">
-                    <div style="text-align: center; margin-top: 4px; font-size: 0.8em; padding-bottom: 4px;">
+                    <img src="Screenshot 2025-05-14 120545.jpg" onerror="this.onerror=null; this.src='/api/placeholder/380/230';" alt="Flight Trajectory" style="width: 100%; height: auto; max-height: 230px; object-fit: contain; display: block;">
+                    <div style="text-align: center; margin-top: 6px; font-size: 0.9em; padding-bottom: 4px;">
                       Flight trajectory over Vancouver Harbour
                     </div>
                   </div>
                   
                   <!-- Point cloud image -->
                   <div style="flex: 1;">
-                    <img src="BCPLACE.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/200';" alt="Point Cloud" style="width: 100%; height: auto; max-height: 200px; object-fit: contain; display: block;">
-                    <div style="text-align: center; margin-top: 4px; font-size: 0.8em;">
+                    <img src="BCPLACE.jpg" onerror="this.onerror=null; this.src='/api/placeholder/380/230';" alt="Point Cloud" style="width: 100%; height: auto; max-height: 230px; object-fit: contain; display: block;">
+                    <div style="text-align: center; margin-top: 6px; font-size: 0.9em;">
                       BC Place Point Cloud
                     </div>
                   </div>
@@ -792,7 +785,7 @@
             <!-- Processing Steps - now below the images -->
             <div>
               <div class="section-title">Raw LiDAR data processing:</div>
-              <ol style="margin: 5px 0; padding-left: 20px; font-size: 0.9em;">
+              <ol style="margin: 5px 0; padding-left: 25px; font-size: 0.95em;">
                 <li>Import SBET and raw LiDAR data to RiProcess</li>
                 <li>Apply system calibration parameters</li>
                 <li>Georeference points to trajectory</li>
@@ -803,6 +796,7 @@
           </div>
         </div>
       </div>
+      
       <!-- LiDAR Classification Window -->
       <div class="lidar-classification-window window">
         <div class="title-bar">
@@ -813,13 +807,13 @@
             <button aria-label="Close"></button>
           </div>
         </div>
-        <div class="window-body" style="padding: 8px;">
-          <div style="display: flex; gap: 15px;">
+        <div class="window-body" style="padding: 10px;">
+          <div style="display: flex; gap: 18px;">
             
             <!-- Left side: Classification Methodology -->
             <div style="flex: 1; max-width: 55%;">
               <div class="section-title">Classification Categories:</div>
-              <table class="interactive" style="margin-top: 8px; font-size: 0.9em; width: 100%;">
+              <table class="interactive" style="margin-top: 8px; font-size: 0.95em; width: 100%;">
                 <thead>
                   <tr>
                     <th style="width: 20%;">Class</th>
@@ -861,24 +855,26 @@
               <!-- Classification Process moved to left column -->
               <div style="margin-top: 15px;">
                 <div class="section-title">Classification Process:</div>
-                <p style="font-size: 0.9em; margin: 6px 0;">
-                  Point cloud classification follows a semi-automated approach using TerraScan software. First, algorithmic methods identify ground points with multiple quality checks. These points are divided into tiles for efficient computing. Next, water is classed out and cloud points removed. The ground data is shifted to match control points. 
-                </p>
-                <p style="font-size: 0.9em; margin: 6px 0;">
-                  Various deliverables are created from the classified points, most commonly: DEMs, DSMs, Intensity Rasters (as a substitute for ortho imagery), and finally contours.
-                </p>
+                <ul style="margin: 6px 0; padding-left: 20px; font-size: 0.95em;">
+                  <li>Semi-automated approach using TerraScan software</li>
+                  <li>Algorithmic methods identify ground points</li>
+                  <li>Tile division for efficient computing</li>
+                  <li>Water classification and noise removal</li>
+                  <li>Ground data shifted to match control points</li>
+                  <li>Create DEMs, DSMs, Intensity Rasters, and contours</li>
+                </ul>
               </div>
             </div>
             
             <!-- Right side: Classification Software Screenshot - optimized for portrait image -->
             <div style="flex: 1; max-width: 40%;">
-              <div class="win98-image-container" style="padding: 2px; background-color: white; height: 100%; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+              <div class="win98-image-container" style="padding: 3px; background-color: white; height: 100%; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
                 <img src="Forestry-2018.jpg" 
-                    onerror="this.onerror=null; this.src='/api/placeholder/220/440';" 
+                    onerror="this.onerror=null; this.src='/api/placeholder/250/480';" 
                     alt="LiDAR Classification" 
-                    style="width: 100%; height: auto; max-height: 440px; object-fit: contain; display: block;">
-                <div style="text-align: center; margin-top: 4px; font-size: 0.8em;">
-                  Various classification methods
+                    style="width: 100%; height: auto; max-height: 480px; object-fit: contain; display: block;">
+                <div style="text-align: center; margin-top: 6px; font-size: 0.9em;">
+                  TerraScan classification of forestry LiDAR data
                 </div>
               </div>
             </div>
@@ -888,10 +884,11 @@
 
       <!-- Wide Photo Divider -->
       <div style="grid-column: 2 / 4; grid-row: 6 / 7; margin: 0 0 12px 0; padding: 0;">
-        <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf; height: auto;">
-          <img src="hag_dk_blue_vanc_water-r1_med.jpg" onerror="this.onerror=null; this.src='/api/placeholder/800/120';" alt="Panoramic View" style="width: 100%; height: auto; max-height: 150px; object-fit: cover; display: block;">
+        <div class="win98-image-container" style="padding: 2px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf; height: auto;">
+          <img src="hag_dk_blue_vanc_water-r1_med.jpg" onerror="this.onerror=null; this.src='/api/placeholder/900/180';" alt="Panoramic View" style="width: 100%; height: auto; max-height: 200px; object-fit: cover; display: block;">
         </div>
       </div>
+      
       <!-- LiDAR Product Examples Window -->
       <div class="conclusion-window window">
         <div class="title-bar">
@@ -902,66 +899,76 @@
             <button aria-label="Close"></button>
           </div>
         </div>
-        <div class="window-body" style="padding: 8px;">
-          <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between;">
+        <div class="window-body" style="padding: 10px;">
+          <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: space-between;">
+            <!-- Enhanced description at the bottom -->
+            <div style="margin-top: 12px; font-size: 0.95em; border: 1px solid #808080; padding: 10px; background-color: #f0f0f0;">
+              <div style="font-weight: bold; font-size: 24px; color: #000080;">LiDAR: Mapping Our World</div>
+              <p style="margin: 8px 0; font-size: 0.95em;">
+                <b>LiDAR is one of the most fascinating and powerful technologies in spatial data science:</b>
+              </p>
+              <ul style="margin: 8px 0; padding-left: 25px; font-size: 0.95em;">
+                <li><b>Past:</b> Reveals archaeological sites hidden beneath vegetation and maps historical landscapes</li>
+                <li><b>Present:</b> Supports informed decisions in forest management, flood modeling, and urban design</li>
+                <li><b>Future:</b> Critical for climate change monitoring, autonomous vehicles, and sustainable development</li>
+              </ul>
+              <p style="margin: 8px 0; font-size: 0.95em;">
+                Eagle Mapping delivers high-precision LiDAR for forestry, mining, corridor mapping, and urban planning in industry-standard formats (LAS/LAZ, GeoTIFF, DWG) with comprehensive documentation. This precise spatial data empowers organizations to create informative maps that drive better decision-making across industries.
+              </p>
+            </div>
             <!-- Product Example 1 -->
-            <div style="width: calc(50% - 6px);">
-              <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+            <div style="width: calc(50% - 8px);">
+              <div class="win98-image-container" style="padding: 2px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
                 <div class="image-container" style="margin: 0;">
-                  <img src="Ortho_Plot.jpg" onerror="this.onerror=null; this.src='/api/placeholder/250/150';" alt="Digital Terrain Model" style="width: 100%; height: auto; max-height: 250px; object-fit: contain; display: block;">
+                  <img src="Ortho_Plot.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/210';" alt="Digital Terrain Model" style="width: 100%; height: auto; max-height: 270px; object-fit: contain; display: block;">
                 </div>
-                <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
-                  Digital Terrain Model (DTM)
+                <div style="text-align: center; margin-top: 4px; font-size: 0.9em;">
+                  Topographic Visualization
                 </div>
               </div>
             </div>
             
             <!-- Product Example 2 -->
-            <div style="width: calc(50% - 6px);">
-              <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+            <div style="width: calc(50% - 8px);">
+              <div class="win98-image-container" style="padding: 2px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
                 <div class="image-container" style="margin: 0;">
-                  <img src="Chilliwack_DSM+Int.jpg" onerror="this.onerror=null; this.src='/api/placeholder/250/150';" alt="Digital Surface Model" style="width: 100%; height: auto; max-height: 250px; object-fit: contain; display: block;">
+                  <img src="Chilliwack_DSM+Int.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/210';" alt="Digital Surface Model" style="width: 100%; height: auto; max-height: 270px; object-fit: contain; display: block;">
                 </div>
-                <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
-                  Surface and Elevations
+                <div style="text-align: center; margin-top: 4px; font-size: 0.9em;">
+                  Mapping Urban Landscapes
                 </div>
               </div>
             </div>
             
             <!-- Product Example 3 -->
-            <div style="width: calc(50% - 6px);">
-              <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+            <div style="width: calc(50% - 8px);">
+              <div class="win98-image-container" style="padding: 2px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
                 <div class="image-container" style="margin: 0;">
-                  <img src="Plot.jpg" onerror="this.onerror=null; this.src='/api/placeholder/250/150';" alt="Contour Map" style="width: 100%; height: auto; max-height: 250px; object-fit: contain; display: block;">
+                  <img src="Plot.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/210';" alt="Contour Map" style="width: 100%; height: auto; max-height: 270px; object-fit: contain; display: block;">
                 </div>
-                <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
+                <div style="text-align: center; margin-top: 4px; font-size: 0.9em;">
                   Contour Map Variations
                 </div>
               </div>
             </div>
             
             <!-- Product Example 4 -->
-            <div style="width: calc(50% - 6px);">
-              <div class="win98-image-container" style="padding: 1px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+            <div style="width: calc(50% - 8px);">
+              <div class="win98-image-container" style="padding: 2px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
                 <div class="image-container" style="margin: 0;">
-                  <img src="GoldenGate-Wallpaper.jpg" onerror="this.onerror=null; this.src='/api/placeholder/250/150';" alt="Classified Point Cloud" style="width: 100%; height: auto; max-height: 250px; object-fit: contain; display: block;">
+                  <img src="GoldenGate-Wallpaper.jpg" onerror="this.onerror=null; this.src='/api/placeholder/350/210';" alt="Classified Point Cloud" style="width: 100%; height: auto; max-height: 270px; object-fit: contain; display: block;">
                 </div>
-                <div style="text-align: center; margin-top: 2px; font-size: 0.8em;">
+                <div style="text-align: center; margin-top: 4px; font-size: 0.9em;">
                   Golden Gate Bridge - Colourized Point Cloud
                 </div>
               </div>
             </div>
           </div>
           
-          <!-- Optional: Brief description at the bottom -->
-          <div style="margin-top: 10px; font-size: 0.9em; border: 1px solid #808080; padding: 6px; background-color: #f0f0f0;">
-            <div style="font-weight: bold;">LiDAR Product Uses:</div>
-            <p style="margin: 3px 0; font-size: 0.85em;">
-              Eagle Mapping delivers high-precision LiDAR products for various applications including forresty, mining, corridor mapping, and urban planning. Products are delivered in industry-standard formats (LAS/LAZ, GeoTIFF, DWG) with documentation.
-            </p>
-          </div>
+          
         </div>
       </div>
+      
       <!-- References Window -->
       <div class="references-window window">
         <div class="title-bar">
@@ -972,43 +979,43 @@
             <button aria-label="Close"></button>
           </div>
         </div>
-        <div class="window-body" style="padding: 8px;">
+        <div class="window-body" style="padding: 10px;">
           <!-- Top row with two columns -->
           <div style="display: flex; gap: 15px; margin-bottom: 15px;">
             <!-- Left side: References -->
             <div style="flex: 1; max-width: 48%;">
               <div class="section-title">Technical References:</div>
-              <ol style="margin: 5px 0; padding-left: 20px; font-size: 0.85em;">
-                <li>RIEGL (2024). <i>RIEGL VQ-780i LiDAR Scanner Technical Documentation.</i> Horn, Austria.</li>
-                <li>American Society for Photogrammetry and Remote Sensing (2022). <i>ASPRS Positional Accuracy Standards for Digital Geospatial Data.</i></li>
-                <li>TerraSolid (2023). <i>TerraScan User Guide for Automated Point Cloud Classification.</i> Helsinki, Finland.</li>
-                <li>Natural Resources Canada (2023). <i>Standards and Guidelines for LiDAR Acquisition.</i> Ottawa, Canada.</li>
-                <li>Eagle Mapping Ltd. (2024). <i>Standard Operating Procedures for Aerial LiDAR Surveys.</i> Port Coquitlam, BC.</li>
+              <ol style="margin: 5px 0; padding-left: 20px; font-size: 0.9em;">
+                <li>RIEGL (2024). <i>VQ-780i Technical Documentation.</i></li>
+                <li>ASPRS (2022). <i>Positional Accuracy Standards.</i></li>
+                <li>TerraSolid (2023). <i>TerraScan User Guide.</i></li>
+                <li>NRCan (2023). <i>LiDAR Acquisition Standards.</i></li>
+                <li>Eagle Mapping (2024). <i>Standard Operating Procedures.</i></li>
               </ol>
             </div>
             
             <!-- Right side: Acknowledgments only -->
             <div style="flex: 1; max-width: 48%;">
               <div class="section-title">Acknowledgments:</div>
-              <p style="font-size: 0.85em; margin: 5px 0;">
-                Special thanks to the team at Eagle Mapping Services Ltd. for providing this practicum opportunity, sharing their expertise and making me feel part of the team. In particular, I would like to thank:
+              <p style="font-size: 0.9em; margin: 5px 0;">
+                Special thanks to Eagle Mapping Services Ltd. team:
               </p>
-              <ul style="margin: 5px 0; padding-left: 20px; font-size: 0.85em;">
-                <li>Matt Aquin - Eagle Mapping Practicum Sponsor</li>
+              <ul style="margin: 5px 0; padding-left: 20px; font-size: 0.9em;">
+                <li>Matt Aquin - Practicum Sponsor</li>
                 <li>John Milne - LiDAR Operator</li>
                 <li>Bryan Attrell - Field Operations Manager</li>
-                <li>James Hume - Eagle Mapping President</li>
-                <li>The BCIT GIS Department faculty</li>
-                <li>Windows 98 CSS library: <i>https://jdan.github.io/98.css/</i></li>
+                <li>James Hume - President</li>
+                <li>BCIT GIS Department faculty</li>
+                <li>Windows 98 CSS: <i>jdan.github.io/98.css</i></li>
               </ul>
               
               <div class="win98-image-container" style="margin-top: 10px; padding: 8px;">
                 <div style="display: flex; justify-content: center; align-items: center;">
                   <div style="margin-right: 15px;">
-                    <img src="BCIT_logo.png" onerror="this.onerror=null; this.src='/api/placeholder/80/80';" alt="BCIT Logo" style="width: 80px; height: auto;">
+                    <img src="BCIT_logo.png" onerror="this.onerror=null; this.src='/api/placeholder/90/90';" alt="BCIT Logo" style="width: 90px; height: auto;">
                   </div>
                   <div>
-                    <img src="logotext.jpg" onerror="this.onerror=null; this.src='/api/placeholder/100/60';" alt="Eagle Mapping Logo" style="width: 100px; height: auto;">
+                    <img src="logotext.jpg" onerror="this.onerror=null; this.src='/api/placeholder/110/70';" alt="Eagle Mapping Logo" style="width: 110px; height: auto;">
                   </div>
                 </div>
               </div>
@@ -1017,11 +1024,11 @@
           
           <!-- Bottom full-width contact section -->
           <div style="width: 100%; border-top: 1px solid #c0c0c0; padding-top: 12px;">
-            <div class="win98-image-container" style="padding: 8px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
+            <div class="win98-image-container" style="padding: 10px; background-color: white; width: 100%; margin: 0; border: 1px solid; border-color: #dfdfdf #808080 #808080 #dfdfdf;">
               <div style="display: flex; align-items: center; justify-content: space-between;">
                 <div style="flex: 1; text-align: center;">
-                  <div class="section-title" style="margin-bottom: 5px;">Contact Information:</div>
-                  <p style="font-size: 0.85em; margin: 5px 0;">
+                  <div class="section-title" style="margin-bottom: 5px; font-size: 24px !important;">Contact Information:</div>
+                  <p style="font-size: 0.9em; margin: 5px 0;">
                     Andrew Dollak | GIS Advanced Diploma, BCIT<br>
                     Email: andrewdollak47@gmail.com | LinkedIn: linkedin.com/in/andrew-dollak-0454921b8
                   </p>
