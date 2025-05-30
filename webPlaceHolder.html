@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Andrew's LiDAR Practicum - Eagle Mapping</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/98.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+      -webkit-font-smoothing: antialiased !important;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #008080;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: auto auto auto auto auto;
+      gap: 20px;
+      grid-template-areas:
+        "header company"
+        "overview workflow"
+        "technical technical"
+        "results results"
+        "footer footer";
+    }
+
+    /* ENHANCED WINDOW STYLING */
+    .window {
+      background: #c0c0c0;
+      border: 2px outset #c0c0c0;
+      box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+      min-height: fit-content;
+    }
+
+    .title-bar {
+      background: linear-gradient(90deg, #000080, #0000cc);
+      color: white;
+      padding: 6px 12px;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #000040;
+    }
+
+    .window-body {
+      padding: 20px;
+      background: #c0c0c0;
+      line-height: 1.5;
+    }
+
+    /* HEADER SECTION */
+    .header-section {
+      grid-area: header;
+    }
+
+    .hero-content {
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .hero-title {
+      font-size: 48px;
+      font-weight: 700;
+      color: #000080;
+      margin: 0 0 10px 0;
+      line-height: 1.1;
+    }
+
+    .hero-subtitle {
+      font-size: 24px;
+      color: #2563eb;
+      font-weight: 600;
+      margin: 0 0 15px 0;
+    }
+
+    .hero-description {
+      font-size: 18px;
+      color: #333;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* COMPANY INFO */
+    .company-section {
+      grid-area: company;
+    }
+
+    .company-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .stat-box {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      padding: 15px;
+      text-align: center;
+      border-radius: 4px;
+    }
+
+    .stat-number {
+      font-size: 28px;
+      font-weight: 700;
+      color: #000080;
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    .company-details {
+      background: #e6f3ff;
+      border: 1px solid #4a90e2;
+      padding: 15px;
+      border-radius: 4px;
+    }
+
+    .company-details h3 {
+      margin: 0 0 10px 0;
+      color: #000080;
+      font-size: 18px;
+    }
+
+    .company-details ul {
+      margin: 0;
+      padding-left: 20px;
+      font-size: 16px;
+    }
+
+    .company-details li {
+      margin-bottom: 5px;
+    }
+
+    /* OVERVIEW SECTION */
+    .overview-section {
+      grid-area: overview;
+    }
+
+    .practicum-highlights {
+      background: #fff9e6;
+      border: 2px solid #ffcc00;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+    }
+
+    .highlight-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #b8860b;
+      margin: 0 0 15px 0;
+    }
+
+    .highlight-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      font-size: 16px;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .highlight-item::before {
+      content: "▶";
+      color: #b8860b;
+      font-weight: bold;
+      margin-top: 2px;
+    }
+
+    /* WORKFLOW SECTION */
+    .workflow-section {
+      grid-area: workflow;
+    }
+
+    .workflow-steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    .workflow-step {
+      background: #f8f9fa;
+      border: 2px solid;
+      border-color: #ffffff #999999 #999999 #ffffff;
+      padding: 20px;
+      position: relative;
+      transition: transform 0.2s ease;
+    }
+
+    .workflow-step:hover {
+      transform: translateY(-2px);
+      box-shadow: 2px 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .workflow-step:nth-child(1) { border-left: 4px solid #007bff; }
+    .workflow-step:nth-child(2) { border-left: 4px solid #28a745; }
+    .workflow-step:nth-child(3) { border-left: 4px solid #ffc107; }
+    .workflow-step:nth-child(4) { border-left: 4px solid #dc3545; }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 10px;
+    }
+
+    .step-number {
+      background: #000080;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .step-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000080;
+      margin: 0;
+    }
+
+    .step-description {
+      font-size: 16px;
+      color: #555;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* TECHNICAL SECTIONS */
+    .technical-section {
+      grid-area: technical;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 20px;
+    }
+
+    .tech-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .image-showcase {
+      border: 2px solid;
+      border-color: #dfdfdf #808080 #808080 #dfdfdf;
+      background: white;
+      padding: 8px;
+    }
+
+    .image-showcase img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .image-caption {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    .tech-details {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      padding: 20px;
+      border-radius: 4px;
+    }
+
+    .tech-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000080;
+      margin: 0 0 15px 0;
+    }
+
+    .tech-list {
+      margin: 0;
+      padding-left: 20px;
+      font-size: 16px;
+    }
+
+    .tech-list li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .tech-list strong {
+      color: #000080;
+    }
+
+    /* CLASSIFICATION TABLE */
+    .classification-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 16px;
+    }
+
+    .classification-table th {
+      background: #000080;
+      color: white;
+      padding: 12px 8px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .classification-table td {
+      padding: 10px 8px;
+      border-bottom: 1px solid #dee2e6;
+      background: white;
+    }
+
+    .classification-table tr:hover {
+      background: #f8f9fa;
+    }
+
+    /* RESULTS SECTION */
+    .results-section {
+      grid-area: results;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .result-item {
+      background: white;
+      border: 2px solid;
+      border-color: #dfdfdf #808080 #808080 #dfdfdf;
+      padding: 8px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .result-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 3px 6px 12px rgba(0,0,0,0.2);
+    }
+
+    .result-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .result-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #000080;
+      margin: 10px 0 5px 0;
+    }
+
+    .result-description {
+      font-size: 14px;
+      color: #666;
+      margin: 0;
+    }
+
+    .results-summary {
+      background: #e6f3ff;
+      border: 1px solid #4a90e2;
+      padding: 20px;
+      border-radius: 4px;
+    }
+
+    .summary-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #2c5aa0;
+      margin: 0 0 15px 0;
+    }
+
+    .summary-text {
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* FOOTER SECTION */
+    .footer-section {
+      grid-area: footer;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+    }
+
+    .contact-info {
+      background: #fff;
+      border: 2px solid #000080;
+      padding: 20px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .contact-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: #000080;
+      margin: 0 0 10px 0;
+    }
+
+    .contact-details {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .contact-details strong {
+      color: #000080;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 1200px) {
+      .container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "header"
+          "company"
+          "overview"
+          "workflow"
+          "technical"
+          "results"
+          "footer";
+      }
+
+      .technical-section {
+        grid-template-columns: 1fr;
+      }
+
+      .results-section {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 36px;
+      }
+
+      .hero-subtitle {
+        font-size: 20px;
+      }
+
+      .company-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    
+    <!-- HEADER -->
+    <section class="header-section">
+      <div class="window">
+        <div class="title-bar">
+          <span>BCIT GIS Advanced Diploma - Industry Practicum</span>
+        </div>
+        <div class="window-body hero-content">
+          <h1 class="hero-title">Andrew's LiDAR Practicum</h1>
+          <div class="hero-subtitle">Eagle Mapping Ltd.</div>
+          <p class="hero-description">
+            Comprehensive hands-on experience in aerial LiDAR acquisition, processing, and analysis for high-precision topographic mapping across diverse industry applications.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPANY INFO -->
+    <section class="company-section">
+      <div class="window">
+        <div class="title-bar">
+          <span>About Eagle Mapping</span>
+        </div>
+        <div class="window-body">
+          <div class="company-stats">
+            <div class="stat-box">
+              <div class="stat-number">40</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">1985</div>
+              <div class="stat-label">Founded</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">NA</div>
+              <div class="stat-label">Operations</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">Multi</div>
+              <div class="stat-label">Industries</div>
+            </div>
+          </div>
+          
+          <div class="company-details">
+            <h3>Industry Leader</h3>
+            <ul>
+              <li><strong>Specialization:</strong> Aerial LiDAR & orthoimagery</li>
+              <li><strong>Coverage:</strong> Canada, US, Mexico, Central America</li>
+              <li><strong>Technology:</strong> RIEGL sensors, state-of-the-art aircraft</li>
+              <li><strong>Markets:</strong> Forestry, mining, utilities, government, archaeology</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRACTICUM OVERVIEW -->
+    <section class="overview-section">
+      <div class="window">
+        <div class="title-bar">
+          <span>Practicum Experience</span>
+        </div>
+        <div class="window-body">
+          <div class="practicum-highlights">
+            <div class="highlight-title">Key Learning Outcomes</div>
+            <div class="highlight-list">
+              <div class="highlight-item">End-to-end LiDAR project lifecycle experience</div>
+              <div class="highlight-item">Multi-country flight operations exposure</div>
+              <div class="highlight-item">Industry-standard software proficiency development</div>
+              <div class="highlight-item">Quality control and specification compliance</div>
+              <div class="highlight-item">Client deliverable creation and documentation</div>
+              <div class="highlight-item">Professional project management workflows</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKFLOW PROCESS -->
+    <section class="workflow-section">
+      <div class="window">
+        <div class="title-bar">
+          <span>LiDAR Workflow Process</span>
+        </div>
+        <div class="window-body">
+          <div class="workflow-steps">
+            <div class="workflow-step">
+              <div class="step-header">
+                <div class="step-number">1</div>
+                <div class="step-title">Flight Planning</div>
+              </div>
+              <div class="step-description">Design optimal flight paths with proper overlap, terrain consideration, and push plans for challenging topography using SnapPlan software.</div>
+            </div>
+            
+            <div class="workflow-step">
+              <div class="step-header">
+                <div class="step-number">2</div>
+                <div class="step-title">Data Acquisition</div>
+              </div>
+              <div class="step-description">Execute flights at 120-150kts using RIEGL VQ-1560II-S scanners with real-time monitoring for data quality and flight path compliance.</div>
+            </div>
+            
+            <div class="workflow-step">
+              <div class="step-header">
+                <div class="step-number">3</div>
+                <div class="step-title">Data Processing</div>
+              </div>
+              <div class="step-description">Process GNSS/IMU data with POSPac MMS, georeference point clouds, and perform coordinate transformations using RiProcess.</div>
+            </div>
+            
+            <div class="workflow-step">
+              <div class="step-header">
+                <div class="step-number">4</div>
+                <div class="step-title">Classification</div>
+              </div>
+              <div class="step-description">Semi-automated point classification using TerraScan to categorize ground, vegetation, buildings, water, and noise points.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL DETAILS -->
+    <section class="technical-section">
+      
+      <!-- Flight Planning Details -->
+      <div class="window">
+        <div class="title-bar">
+          <span>Flight Planning & Acquisition</span>
+        </div>
+        <div class="window-body tech-content">
+          <div class="image-showcase">
+            <img src="qcflightmerge.jpg" 
+                 onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImZsaWdodCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzAwN2JmZjtzdG9wLW9wYWNpdHk6MSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzAwNDA4MDtzdG9wLW9wYWNpdHk6MSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjUwIiBmaWxsPSJ1cmwoI2ZsaWdodCkiLz48dGV4dCB4PSIyMDAiIHk9IjEyNSIgZm9udC1zaXplPSIyMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIj5GbGlnaHQgUGxhbm5pbmcgaW4gU25hcFBsYW48L3RleHQ+PC9zdmc+'" 
+                 alt="Flight Planning">
+            <div class="image-caption">Flight lines over Digital Elevation Models in SnapPlan</div>
+          </div>
+          
+          <div class="tech-details">
+            <div class="tech-title">Planning Methodology</div>
+            <ul class="tech-list">
+              <li><strong>Overlap Requirements:</strong> Precise calculations for lateral and forward overlap</li>
+              <li><strong>Terrain Analysis:</strong> DEM integration for altitude optimization</li>
+              <li><strong>Push Plans:</strong> Triple coverage strategies for valleys and challenging terrain</li>
+              <li><strong>Aircraft Platform:</strong> Piper Navajo with RIEGL VQ-1560II-S integration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Processing Details -->
+      <div class="window">
+        <div class="title-bar">
+          <span>Data Processing & Classification</span>
+        </div>
+        <div class="window-body tech-content">
+          <div class="image-showcase">
+            <img src="BCPLACE.jpg" 
+                 onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9InBvaW50cyIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNTAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZmY2NTAwO3N0b3Atb3BhY2l0eToxIi8+PHN0b3Agb2Zmc2V0PSI1MCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNkYzI2MjY7c3RvcC1vcGFjaXR5OjEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMxMGI5ODE7c3RvcC1vcGFjaXR5OjEiLz48L3JhZGlhbEdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0idXJsKCNwb2ludHMpIi8+PHRleHQgeD0iMjAwIiB5PSIxMjUiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCI+UHJvY2Vzc2VkIFBvaW50IENsb3VkPC90ZXh0Pjwvc3ZnPg=='" 
+                 alt="Point Cloud Processing">
+            <div class="image-caption">BC Place Point Cloud - Processed LiDAR Data</div>
+          </div>
+          
+          <div class="tech-details">
+            <div class="tech-title">Processing Pipeline</div>
+            <ul class="tech-list">
+              <li><strong>Trajectory Processing:</strong> GNSS/IMU data processing with Applanix POSPac MMS</li>
+              <li><strong>Point Cloud Generation:</strong> Raw data georeferencing using SBET files</li>
+              <li><strong>Quality Control:</strong> Systematic QA/QC checks before classification</li>
+              <li><strong>Classification Software:</strong> TerraScan for semi-automated point categorization</li>
+            </ul>
+          </div>
+
+          <table class="classification-table">
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Category</th>
+                <th>Application</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Unclassified</td><td>Initial state</td></tr>
+              <tr><td>2</td><td>Ground</td><td>DTM generation</td></tr>
+              <tr><td>3-5</td><td>Vegetation</td><td>Forest analysis</td></tr>
+              <tr><td>6</td><td>Buildings</td><td>Urban mapping</td></tr>
+              <tr><td>9</td><td>Water</td><td>Hydrologic features</td></tr>
+              <tr><td>17</td><td>Bridge Decks</td><td>Infrastructure</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- RESULTS SHOWCASE -->
+    <section class="results-section">
+      
+      <div class="window">
+        <div class="title-bar">
+          <span>Project Deliverables</span>
+        </div>
+        <div class="window-body">
+          <div class="results-grid">
+            <div class="result-item">
+              <img src="Ortho_Plot.jpg" 
+                   onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9InRvcG8iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM2NjQwODA7c3RvcC1vcGFjaXR5OjEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMyNTY2M2I7c3RvcC1vcGFjaXR5OjEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0idXJsKCN0b3BvKSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9ImJvbGQiPlRvcG9ncmFwaGljIE1vZGVsPC90ZXh0Pjwvc3ZnPg=='" 
+                   alt="Topographic Visualization">
+              <div class="result-title">Digital Terrain Models</div>
+              <div class="result-description">High-resolution bare earth surfaces</div>
+            </div>
+            
+            <div class="result-item">
+              <img src="Chilliwack_DSM+Int.jpg" 
+                   onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9InVyYmFuIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojNGI1YzY4O3N0b3Atb3BhY2l0eToxIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojOWNhM2FmO3N0b3Atb3BhY2l0eToxIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9InVybCgjdXJiYW4pIi8+PHRleHQgeD0iMTUwIiB5PSIxMDAiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCI+VXJiYW4gTWFwcGluZzwvdGV4dD48L3N2Zz4='" 
+                   alt="Urban Mapping">
+              <div class="result-title">Urban Analysis</div>
+              <div class="result-description">Building extraction and city modeling</div>
+            </div>
+            
+            <div class="result-item">
+              <img src="Plot.jpg" 
+                   onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iY29udG91ciIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIj48Y2lyY2xlIGN4PSIxNSIgY3k9IjE1IiByPSIxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjU2M2ViIiBzdHJva2Utd2lkdGg9IjIiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjZjRmN2ZhIi8+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9InVybCgjY29udG91cikiIG9wYWNpdHk9IjAuNyIvPjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmb250LXNpemU9IjE2IiBmaWxsPSIjMWE0N2FlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCI+Q29udG91ciBNYXBzPC90ZXh0Pjwvc3ZnPg=='" 
+                   alt="Contour Maps">
+              <div class="result-title">Contour Mapping</div>
+              <div class="result-description">Precision elevation contours</div>
+            </div>
+            
+            <div class="result-item">
+              <img src="GoldenGate-Wallpaper.jpg" 
+                   onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9InBjbG91ZCIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNTAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZjU2NTAwO3N0b3Atb3BhY2l0eToxIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMTBiOTgxO3N0b3Atb3BhY2l0eToxIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9InVybCgjcGNsb3VkKSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9ImJvbGQiPjNEIFBvaW50IENsb3VkczwvdGV4dD48L3N2Zz4='" 
+                   alt="Point Cloud Visualization">
+              <div class="result-title">Point Cloud Visualization</div>
+              <div class="result-description">Colorized 3D data representations</div>
+            </div>
+          </div>
+          
+          <div class="results-summary">
+            <div class="summary-title">Industry-Standard Deliverables</div>
+            <p class="summary-text">
+              Comprehensive LiDAR data products delivered in industry-standard formats including LAS/LAZ point clouds, GeoTIFF rasters, AutoCAD DWG files, and complete project documentation. All deliverables meet or exceed client specifications for accuracy and completeness.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact & References -->
+      <div class="window">
+        <div class="title-bar">
+          <span>Contact & Acknowledgments</span>
+        </div>
+        <div class="window-body">
+          <div class="contact-info">
+            <div class="contact-name">Andrew Dollak</div>
+            <div class="contact-details">
+              <strong>Program:</strong> GIS Advanced Diploma, BCIT<br>
+              <strong>Email:</strong> andrewdollak47@gmail.com<br>
+              <strong>LinkedIn:</strong> andrew-dollak-0454921b8
+            </div>
+          </div>
+
+          <div class="tech-details" style="margin-top: 20px;">
+            <div class="tech-title">Special Thanks</div>
+            <ul class="tech-list" style="font-size: 14px;">
+              <li><strong>Matt Aquin</strong> - Practicum Sponsor</li>
+              <li><strong>John Milne</strong> - LiDAR Operations</li>
+              <li><strong>Bryan Attrell</strong> - Field Operations Manager</li>
+              <li><strong>James Hume</strong> - President, Eagle Mapping</li>
+              <li><strong>BCIT Faculty</strong> - GIS Department</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+
+  </div>
+</body>
+</html>
